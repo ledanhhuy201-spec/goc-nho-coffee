@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Góc Nhỏ Coffee</title>
+<meta name="description" content="Góc Nhỏ Coffee: quán cà phê khởi nghiệp của Nguyễn Linh Đan, mang hương vị Đắk Lắk về phố và dùng tiền lãi mở workshop miễn phí cho các em nhỏ.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236b2817'/%3E%3Cpath d='M7 25V12a5 5 0 0 1 5-5h13' fill='none' stroke='%23f7f2e9' stroke-width='3' stroke-linecap='round'/%3E%3Cellipse cx='18.5' cy='18.5' rx='4.6' ry='6.4' transform='rotate(-38 18.5 18.5)' fill='%23e6b86a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&amp;display=swap">
+<style id="gn-css">
+:root{
+  /* Layout: basalt-red hero with a dripping phin, then the founder's note, a four-stop route,
+     a leaf-green workshop band; the revenue ledger is its own view (#ledger). Single light theme. */
+  --bean:#edefe6;
+  --bean-2:#e2e5d8;
+  --paper:#fbfbf7;
+  --roast:#2a1b12;
+  --roast-2:#5c4a3e;
+  --muted:#6c6057;
+  --line:rgba(42,27,18,.14);
+  --grid:#e6e5dd;
+  --basalt:#6b2817;
+  --basalt-deep:#57200f;
+  --leaf:#21463a;
+  --cherry:#a51e2b;
+  --crema:#e6b86a;
+  --milk:#f7f2e9;
+  --rev:#1b7a55;
+  --cost:#c07a12;
+  --f-display:"Bricolage Grotesque","Be Vietnam Pro",system-ui,sans-serif;
+  --f-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --wrap:1180px;
+  --pad:clamp(20px,4vw,40px);
+  --nav-h:68px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bean);color:var(--roast);font-family:var(--f-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+svg{display:block}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:2px solid var(--cherry);outline-offset:3px;border-radius:6px}
+.hero :focus-visible,.workshops :focus-visible,.nav.on-dark :focus-visible,.kpi.fund :focus-visible,.pending :focus-visible{outline-color:var(--crema)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.h-display{font-family:var(--f-display);font-weight:700;font-stretch:84%;font-variation-settings:"opsz" 72;font-size:clamp(34px,4.6vw,56px);line-height:1.1;letter-spacing:-.012em;margin:0 0 20px;text-wrap:balance}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;color:var(--roast);background:rgba(237,239,230,.94);-webkit-backdrop-filter:saturate(1.3) blur(10px);backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--line);transition:background-color .25s,color .25s,border-color .25s;--logo-cut:var(--bean);--logo-bean:var(--cherry)}
+.nav.on-dark{background:transparent;border-bottom-color:transparent;color:var(--milk);-webkit-backdrop-filter:none;backdrop-filter:none;--logo-cut:var(--basalt);--logo-bean:var(--crema)}
+.nav-in{display:flex;align-items:center;gap:16px;height:var(--nav-h)}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:4px 0;color:inherit;font-family:var(--f-display);font-weight:700;font-size:21px;letter-spacing:-.01em;line-height:1;white-space:nowrap}
+.brand small{font-family:var(--f-body);font-weight:500;font-size:14px;letter-spacing:0;opacity:.72;margin-left:2px}
+.logo .cut{stroke:var(--logo-cut)}
+.logo .bean{fill:var(--logo-bean)}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto}
+.nav-link{background:none;border:0;padding:8px 12px;border-radius:8px;font-size:15px;font-weight:500;color:inherit;white-space:nowrap}
+.nav-link:hover{background:rgba(42,27,18,.07)}
+.nav.on-dark .nav-link:hover{background:rgba(247,242,233,.12)}
+.nav-link[aria-current="page"]{box-shadow:inset 0 -2px 0 currentColor;border-radius:0}
+.lang{display:flex;flex:none;border:1px solid currentColor;border-radius:9px;overflow:hidden;margin-left:8px}
+.lang button{background:none;border:0;padding:6px 10px;font-size:13px;font-weight:600;line-height:1.2;color:inherit;min-width:40px}
+.lang button[aria-pressed="true"]{background:var(--roast);color:var(--milk)}
+.nav.on-dark .lang button[aria-pressed="true"]{background:var(--milk);color:var(--roast)}
+.menu-btn{display:none;background:none;border:1px solid currentColor;border-radius:9px;padding:6px 12px;font-size:14px;font-weight:600;color:inherit}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .lang{margin-left:auto}
+  .menu-btn{display:inline-flex}
+  .nav-links.open{display:flex;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:var(--bean);color:var(--roast);padding:8px var(--pad) 18px;border-bottom:1px solid var(--line);box-shadow:0 14px 30px rgba(42,27,18,.12)}
+  .nav-links.open .nav-link{text-align:left;padding:12px 10px;font-size:17px}
+  .nav-links.open .nav-link[aria-current="page"]{box-shadow:inset 3px 0 0 var(--cherry);border-radius:0 8px 8px 0}
+}
+@media (max-width:400px){.brand small{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--basalt);color:var(--milk);padding:calc(var(--nav-h) + 56px) 0 80px}
+.contours{position:absolute;inset:0;width:100%;height:100%;color:rgba(247,242,233,.085);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:center}
+.hero h1{font-family:var(--f-display);font-weight:700;font-stretch:76%;font-variation-settings:"opsz" 96;font-size:clamp(50px,7.4vw,104px);line-height:1.06;letter-spacing:-.018em;margin:0 0 28px;max-width:11.5ch;text-wrap:balance}
+.hero-lede{font-size:clamp(17px,1.45vw,20px);line-height:1.6;max-width:33em;color:rgba(247,242,233,.88);margin-bottom:32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-by{display:flex;align-items:center;gap:12px;margin-top:36px;font-size:15px;color:rgba(247,242,233,.78)}
+.hero-by::before{content:"";width:18px;height:18px;flex:none;border-left:2px solid var(--crema);border-top:2px solid var(--crema);border-top-left-radius:5px}
+.hero-art{justify-self:center;width:min(100%,420px)}
+.phin{width:100%;height:auto;overflow:visible}
+.phin .coffee{transform-box:fill-box;transform-origin:50% 100%;animation:gn-fill 6s cubic-bezier(.22,.7,.3,1) .5s both}
+.phin .drop{opacity:0;transform-box:view-box;animation:gn-drop 1.6s cubic-bezier(.55,0,.85,.55) .3s 4,gn-drop-slow 4.8s cubic-bezier(.55,0,.85,.55) 6.7s infinite}
+.phin .drop.d2{animation-delay:1.1s,9.1s}
+@keyframes gn-fill{from{transform:scaleY(.32)}to{transform:scaleY(1)}}
+@keyframes gn-drop{0%{opacity:0;transform:translateY(0) scale(.5)}12%{opacity:1;transform:translateY(0) scale(1)}88%{opacity:1}100%{opacity:0;transform:translateY(142px)}}
+@keyframes gn-drop-slow{0%{opacity:0;transform:translateY(0) scale(.5)}4%{opacity:1;transform:translateY(0) scale(1)}30%{opacity:1}34%,100%{opacity:0;transform:translateY(142px)}}
+@media (prefers-reduced-motion:reduce){
+  .phin .coffee{animation:none}
+  .phin .drop{animation:none;opacity:0}
+  .nav,.toast,.tab{transition:none}
+}
+@media (max-width:860px){
+  .hero{padding:calc(var(--nav-h) + 36px) 0 56px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{width:min(74%,300px);margin-top:8px}
+}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:10px;border:1.5px solid transparent;font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;white-space:nowrap}
+.btn-crema{background:var(--crema);color:var(--roast)}
+.btn-crema:hover{background:#efc882}
+.btn-line-light{border-color:rgba(247,242,233,.6);color:var(--milk);background:transparent}
+.btn-line-light:hover{background:rgba(247,242,233,.1)}
+.btn-dark{background:var(--roast);color:var(--milk)}
+.btn-dark:hover{background:#3d2a1e}
+.btn-line{border-color:rgba(42,27,18,.28);background:transparent;color:var(--roast)}
+.btn-line:hover{background:rgba(42,27,18,.05)}
+.btn-block{width:100%}
+.btn[disabled]{opacity:.55;cursor:default}
+
+/* ---------- sections ---------- */
+.section{padding:clamp(72px,10vw,128px) 0;scroll-margin-top:var(--nav-h)}
+.story-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.story-side{color:var(--roast-2);max-width:28em}
+.quote{position:relative;margin:0;padding:40px 0 0 40px}
+.quote::before{content:"";position:absolute;left:0;top:0;width:48px;height:48px;border-left:4px solid var(--cherry);border-top:4px solid var(--cherry);border-top-left-radius:12px}
+.quote blockquote{margin:0}
+.quote blockquote p{font-family:var(--f-display);font-weight:400;font-stretch:96%;font-variation-settings:"opsz" 36;font-size:clamp(23px,2.45vw,33px);line-height:1.42;letter-spacing:-.006em;max-width:27em}
+.quote figcaption{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:15px;font-weight:500;color:var(--roast-2)}
+.quote figcaption::before{content:"";width:28px;height:2px;background:currentColor}
+@media (max-width:860px){.story-grid{grid-template-columns:1fr}.quote{padding:32px 0 0 28px}.quote::before{width:36px;height:36px}}
+
+.journey{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.route{list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;position:relative}
+.route::before{content:"";position:absolute;left:28px;right:28px;top:28px;border-top:2px dotted rgba(42,27,18,.38)}
+.stop{position:relative}
+.stop-mark{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:1.5px solid var(--roast);color:var(--roast)}
+.stop-mark svg{width:26px;height:26px}
+.stop:last-child .stop-mark{background:var(--leaf);border-color:var(--leaf);color:var(--milk)}
+.stop-n{position:absolute;top:-6px;right:-8px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--cherry);color:var(--milk);font-family:var(--f-display);font-size:13px;font-weight:700;line-height:1}
+.stop h3{font-family:var(--f-display);font-weight:650;font-stretch:92%;font-size:23px;line-height:1.2;letter-spacing:-.006em;margin:22px 0 8px}
+.stop p{color:var(--roast-2);font-size:16px;line-height:1.6;max-width:24em}
+@media (max-width:860px){
+  .route{grid-template-columns:1fr;gap:34px}
+  .route::before{left:27px;right:auto;top:28px;bottom:28px;border-top:0;border-left:2px dotted rgba(42,27,18,.38)}
+  .stop{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:20px}
+  .stop-mark{grid-row:1 / span 2}
+  .stop h3{margin:12px 0 6px}
+}
+
+.workshops{background:var(--leaf);color:var(--milk)}
+.ws-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,88px);align-items:start}
+.ws-lede{color:rgba(247,242,233,.86);max-width:30em}
+.ws-stats{display:grid;grid-template-columns:auto minmax(0,1fr);margin-top:40px;max-width:30em}
+.stat{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-columns:subgrid;grid-column:1 / -1;column-gap:20px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(247,242,233,.24)}
+.stat:last-child{border-bottom:1px solid rgba(247,242,233,.24)}
+.stat-v{font-family:var(--f-display);font-weight:700;font-stretch:88%;font-size:clamp(36px,3.8vw,48px);line-height:1;color:var(--crema);text-align:right}
+.stat-l{font-size:16px;line-height:1.4;color:rgba(247,242,233,.86)}
+.tracks{display:grid}
+.track{display:grid;grid-template-columns:76px minmax(0,1fr);gap:22px;align-items:start;padding:30px 0;border-top:1px solid rgba(247,242,233,.24)}
+.track:last-child{border-bottom:1px solid rgba(247,242,233,.24)}
+.track svg{width:76px;height:76px}
+.track h3{font-family:var(--f-display);font-weight:650;font-stretch:92%;font-size:28px;line-height:1.15;margin:0 0 8px}
+.track p{color:rgba(247,242,233,.86)}
+.ws-recent{margin-top:72px}
+.ws-recent h3{font-family:var(--f-display);font-weight:650;font-size:22px;margin:0 0 16px}
+.ws-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.ws-item{border:1px solid rgba(247,242,233,.26);border-radius:14px;padding:16px 18px 18px}
+.ws-date{font-size:14px;color:rgba(247,242,233,.72)}
+.ws-title{font-weight:600;font-size:17px;line-height:1.35;margin:6px 0 8px;overflow-wrap:anywhere}
+.ws-meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:14px;color:rgba(247,242,233,.85)}
+.ws-chip{display:inline-flex;align-items:center;gap:6px}
+.ws-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--crema)}
+.ws-chip.coffee::before{background:#c98b5a}
+.ws-empty{display:flex;align-items:center;gap:14px;padding:20px 22px;border:1px dashed rgba(247,242,233,.4);border-radius:14px;color:rgba(247,242,233,.9);max-width:36em}
+@media (max-width:860px){.ws-grid{grid-template-columns:1fr}.ws-recent{margin-top:48px}}
+
+.footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color:var(--roast-2)}
+.footer-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.footer .brand{font-size:18px;color:var(--roast);--logo-cut:var(--bean);--logo-bean:var(--cherry)}
+.footer-text{display:grid;gap:2px;max-width:36em}
+
+/* ---------- ledger ---------- */
+.ledger{padding:calc(var(--nav-h) + 40px) 0 128px}
+.ledger-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px}
+.ledger-head h1{font-family:var(--f-display);font-weight:700;font-stretch:82%;font-variation-settings:"opsz" 72;font-size:clamp(38px,5.2vw,62px);line-height:1.04;letter-spacing:-.014em;margin:0 0 8px}
+.ledger-lede{color:var(--roast-2);max-width:38em}
+.meta-line{font-size:14px;color:var(--muted);margin-top:6px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 18px}
+.chip{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(42,27,18,.2);background:var(--paper);font-size:15px;font-weight:500;color:var(--roast)}
+.chip:hover{border-color:rgba(42,27,18,.45)}
+.chip[aria-pressed="true"]{background:var(--roast);border-color:var(--roast);color:var(--milk)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px 18px;min-width:0}
+.kpi-l{display:block;font-size:14px;font-weight:500;color:var(--roast-2)}
+.kpi-v{display:block;margin-top:8px;font-weight:600;font-size:clamp(21px,2.1vw,27px);line-height:1.15;letter-spacing:-.012em;overflow-wrap:anywhere}
+.kpi-s{display:block;margin-top:6px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.kpi.fund{background:var(--leaf);border-color:var(--leaf);color:var(--milk)}
+.kpi.fund .kpi-l,.kpi.fund .kpi-s{color:rgba(247,242,233,.82)}
+@media (max-width:940px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ledger-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px;align-items:start}
+.ledger-grid.has-side{grid-template-columns:minmax(0,1fr) 344px}
+.ledger-main{display:grid;gap:20px;min-width:0}
+.ledger-side{display:grid;gap:16px}
+@media (max-width:1060px){.ledger-grid.has-side{grid-template-columns:minmax(0,1fr)}.ledger-side{position:static;order:-1}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px 22px 22px;min-width:0}
+.panel-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:14px}
+.panel-t{font-family:var(--f-body);font-size:18px;font-weight:600;line-height:1.3;margin:0}
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--roast-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+.link-btn{background:none;border:0;padding:4px 0;font-size:14px;font-weight:500;color:var(--roast);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(42,27,18,.35)}
+.link-btn:hover{text-decoration-color:currentColor}
+.panel-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.chart{position:relative}
+.chart svg{overflow:visible}
+.chart text{font-family:var(--f-body)}
+.chart .grid{stroke:var(--grid);stroke-width:1}
+.chart .axis{stroke:#c7c3b7;stroke-width:1}
+.chart .tick,.chart .xl{font-size:12px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.chart .xl.yr{font-size:11px}
+.chart .dl{font-size:12px;font-weight:600;fill:var(--roast)}
+.chart .band{outline:none}
+.chart .band .hit{fill:transparent}
+.chart .band:hover .hit,.chart .band:focus-visible .hit,.chart .band.on .hit{fill:rgba(42,27,18,.055)}
+.chart .band.dim .bar{opacity:.34}
+.chart .band:focus-visible .hit{stroke:var(--cherry);stroke-width:1.5}
+.tip{position:absolute;left:0;top:0;z-index:5;pointer-events:none;min-width:190px;padding:10px 12px 11px;border-radius:10px;background:var(--roast);color:var(--milk);font-size:13px;line-height:1.45;box-shadow:0 8px 26px rgba(42,27,18,.22);opacity:0;transition:opacity .12s}
+.tip.show{opacity:1}
+.tip-h{font-weight:600;margin-bottom:6px;color:rgba(247,242,233,.9)}
+.tip-row{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tip-key{width:12px;height:3px;border-radius:2px;flex:none}
+.tip-row b{font-weight:600;font-variant-numeric:tabular-nums}
+.tip-row i{font-style:normal;color:rgba(247,242,233,.72)}
+.tip-sep{height:1px;background:rgba(247,242,233,.18);margin:6px 0}
+.chart-empty{display:grid;place-items:center;min-height:200px;text-align:center;color:var(--roast-2);font-size:15px;border:1px dashed rgba(42,27,18,.2);border-radius:12px;padding:20px}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl th{text-align:left;font-weight:500;font-size:13px;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.tbl .num{text-align:right}
+.tbl-wrap{overflow-x:auto}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.bar-row{display:grid;gap:6px}
+.bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px}
+.bar-top b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-top b small{font-weight:500;color:var(--muted);font-size:13px;margin-left:6px}
+.bar-track{height:10px;border-radius:0 4px 4px 0;background:#eeede6;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:0 4px 4px 0;min-width:2px}
+.muted-note{font-size:15px;color:var(--roast-2)}
+.entries{list-style:none;margin:0;padding:0}
+.entry{display:grid;grid-template-columns:7.4em minmax(0,1fr) auto 5.6em;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:15px}
+.entry.head{border-top:0;padding-top:0;font-size:13px;color:var(--muted)}
+.entry.head span:nth-child(3){text-align:right}
+.e-date{font-size:14px;color:var(--roast-2);font-variant-numeric:tabular-nums}
+.e-main{min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.e-cat{font-weight:500}
+.e-note{color:var(--roast-2);overflow-wrap:anywhere}
+.e-amt{font-weight:600;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.e-act{text-align:right}
+.dot{width:9px;height:9px;border-radius:3px;flex:none}
+.tag{font-size:12px;font-weight:600;line-height:1.5;padding:1px 8px;border-radius:999px;background:#f3e2bf;color:#5f410c}
+.entry.is-del .e-main,.entry.is-del .e-amt,.entry.is-del .e-date{text-decoration:line-through;opacity:.5}
+.row-btn{background:none;border:1px solid transparent;border-radius:8px;padding:5px 9px;font-size:13px;font-weight:500;color:var(--roast-2)}
+.row-btn:hover{border-color:rgba(42,27,18,.2);color:var(--cherry)}
+.more{margin-top:14px}
+@media (max-width:640px){
+  .entry{grid-template-columns:minmax(0,1fr) auto;row-gap:3px}
+  .entry.head{display:none}
+  .e-date{grid-column:1 / -1;font-size:13px}
+  .e-act{grid-column:1 / -1;text-align:left}
+  .e-act:empty{display:none}
+}
+.ws-row{grid-template-columns:7.4em minmax(0,1fr) 4.5em auto 5.6em}
+.ws-row .e-kids{text-align:right;font-variant-numeric:tabular-nums;color:var(--roast-2)}
+@media (max-width:640px){
+  .ws-row{grid-template-columns:minmax(0,1fr) auto}
+  .ws-row .e-date,.ws-row .e-act{grid-column:1 / -1}
+  .ws-row .e-kids{grid-column:1;text-align:left;font-size:14px}
+  .ws-row .e-kids::after{content:attr(data-unit)}
+  .ws-row .e-amt{grid-column:2;grid-row:2}
+}
+@media (max-width:480px){.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.chip{padding:0 8px;white-space:nowrap}}
+.notice{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:20px;padding:14px 18px;border-radius:12px;font-size:15px}
+.notice.demo{background:#f6e6c6;border:1px solid #e0c38a;color:#4a330c}
+.notice.demo .btn{min-height:40px;font-size:15px}
+.empty-state{display:grid;gap:14px;justify-items:start;padding:26px 24px;border:1px dashed rgba(42,27,18,.25);border-radius:16px;background:var(--paper)}
+.empty-state p{max-width:34em}
+
+/* ---------- editor ---------- */
+.editor .panel-t{margin-bottom:14px}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;margin-bottom:18px;border-radius:11px;background:var(--bean)}
+.tab{min-height:38px;padding:0 2px;border:0;border-radius:8px;background:transparent;font-size:13.5px;font-weight:500;color:var(--roast-2);transition:background-color .15s}
+.tab[aria-selected="true"]{background:var(--paper);color:var(--roast);font-weight:600;box-shadow:0 1px 2px rgba(42,27,18,.14)}
+.field{display:grid;gap:6px;margin:0 0 14px;padding:0;border:0;min-width:0}
+.lbl{font-size:14px;font-weight:500;padding:0}
+.input{width:100%;min-height:46px;padding:0 12px;border:1px solid rgba(42,27,18,.24);border-radius:9px;background:#fff;font-size:16px;color:var(--roast)}
+.input:focus{outline:2px solid var(--cherry);outline-offset:0;border-color:transparent}
+select.input{appearance:none;-webkit-appearance:none;padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235c4a3e' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+input[type="date"].input{padding-right:8px}
+.input[aria-invalid="true"]{border-color:var(--cherry)}
+.hint{font-size:13px;color:var(--muted)}
+.hint.ok{color:var(--roast-2);font-weight:500}
+.err{font-size:13px;font-weight:500;color:var(--cherry)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.input{min-width:0;max-width:100%}
+.ledger-side .row2.date-row{grid-template-columns:minmax(0,1fr);row-gap:0}
+@media (max-width:1060px) and (min-width:420px){.ledger-side .row2.date-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.seg label{position:relative;display:block}
+.seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.seg span{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 10px;border-radius:9px;border:1px solid rgba(42,27,18,.24);background:#fff;font-size:15px;font-weight:500}
+.seg input:checked + span{background:var(--roast);border-color:var(--roast);color:var(--milk)}
+.seg input:focus-visible + span{outline:2px solid var(--cherry);outline-offset:2px}
+.seg .dot{width:8px;height:8px}
+.fund-sum{display:grid;gap:8px;margin:4px 0 18px;padding:14px 16px;border-radius:12px;background:var(--bean);font-size:14px}
+.fund-sum div{display:flex;justify-content:space-between;gap:12px}
+.fund-sum b{font-weight:600;font-variant-numeric:tabular-nums}
+.side-note{font-size:14px;color:var(--roast-2)}
+
+/* ---------- pending bar & toast ---------- */
+.pending{position:fixed;left:50%;bottom:16px;z-index:50;transform:translateX(-50%);width:min(600px,calc(100% - 24px));display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:10px 10px 10px 18px;border-radius:14px;background:var(--roast);color:var(--milk);box-shadow:0 12px 34px rgba(42,27,18,.3)}
+.pending p{flex:1 1 180px;font-size:15px;font-weight:500}
+.pending .btn{min-height:42px;padding:0 16px;font-size:15px}
+.pending .btn-line-light{border-color:rgba(247,242,233,.45)}
+.toast{position:fixed;left:50%;top:calc(var(--nav-h) + 14px);z-index:60;max-width:calc(100% - 32px);padding:11px 16px;border-radius:10px;background:var(--roast);color:var(--milk);font-size:15px;box-shadow:0 10px 30px rgba(42,27,18,.25);opacity:0;transform:translate(-50%,-8px);transition:opacity .2s,transform .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media print{.nav,.pending,.toast,.ledger-side,.filters,.hero-actions{display:none!important}.hero{padding-top:40px}}
+@media (forced-colors:active){.bar-fill,.chart .bar{forced-color-adjust:none}}
+
+/* ---------- menu ---------- */
+.menu-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:12px 56px;align-items:end;margin-bottom:48px}
+.menu-head .h-display{margin:0}
+.menu-intro{display:grid;gap:10px;justify-items:start}
+.menu-lede{color:var(--roast-2);max-width:32em}
+.menu-board{columns:2 320px;column-gap:80px}
+.mgroup{break-inside:avoid;margin:0 0 44px}
+.mgroup h3{font-family:var(--f-display);font-weight:650;font-stretch:90%;font-size:22px;line-height:1.2;margin:0 0 18px;padding-bottom:12px;border-bottom:1.5px solid var(--roast)}
+.mitems{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.mi-top{display:flex;align-items:baseline;gap:10px}
+.mi-name{font-family:var(--f-display);font-weight:600;font-stretch:94%;font-size:20px;line-height:1.3;min-width:0}
+.mi-lead{flex:1 1 24px;min-width:24px;border-bottom:2px dotted rgba(42,27,18,.3);transform:translateY(-5px)}
+.mi-price{font-family:var(--f-display);font-weight:700;font-size:20px;line-height:1.3;white-space:nowrap}
+.mi-desc{margin-top:3px;font-size:15px;line-height:1.5;color:var(--roast-2);max-width:30em}
+.mi.sig .mi-name::before,.sig-key::before{content:"";display:inline-block;width:11px;height:11px;margin-right:9px;border-left:2.5px solid var(--cherry);border-top:2.5px solid var(--cherry);border-top-left-radius:3px;vertical-align:.32em}
+.menu-foot{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:4px;font-size:14px;color:var(--muted)}
+.sig-key{color:var(--roast-2);font-weight:500}
+@media (max-width:860px){.menu-head{grid-template-columns:1fr;margin-bottom:36px}.menu-board{columns:1}.mgroup{margin-bottom:36px}}
+
+/* ---------- business model ---------- */
+.model{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.model-head{max-width:44em}
+.model-lede{color:var(--roast-2)}
+.cup{margin:40px 0 32px;padding:22px 24px 24px;border-radius:16px;background:var(--bean)}
+.cup-h{font-family:var(--f-body);font-size:17px;font-weight:600;line-height:1.35;margin:0 0 14px}
+.cup-bar{display:flex;gap:2px;height:28px}
+.seg{display:flex;align-items:center;min-width:0;padding:0 8px;border-radius:4px;font-size:13px;font-weight:600;white-space:nowrap}
+.cup-legend{display:flex;flex-wrap:wrap;gap:6px 20px;list-style:none;margin:12px 0 0;padding:0;font-size:14px;color:var(--roast-2)}
+.cup-legend li{display:inline-flex;align-items:center;gap:7px}
+.cup-legend b{font-weight:600;color:var(--roast)}
+.cup-note{margin-top:12px;font-size:15px;font-weight:500}
+.model-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr;grid-template-areas:"inputs tiles" "inputs side";gap:20px 48px;align-items:start}
+.model-inputs{grid-area:inputs}
+.m-tiles{grid-area:tiles;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.m-side{grid-area:side;min-width:0}
+.m-be{grid-column:1 / -1;margin-top:2px;font-size:16px;font-weight:600}
+.m-group{margin:0 0 24px;padding:0;border:0;min-width:0}
+.m-group legend{padding:0;margin-bottom:6px;font-family:var(--f-display);font-weight:650;font-stretch:92%;font-size:20px}
+.sl{display:grid;gap:2px;padding:12px 0 10px;border-top:1px solid var(--line)}
+.sl-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px}
+.sl-top output{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sl input[type="range"]{width:100%;height:28px;margin:2px 0 0;accent-color:var(--roast);cursor:pointer}
+.m-note{margin-top:14px;font-size:14px;color:var(--muted)}
+.m-actual{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--bean);font-size:15px}
+.m-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chart .pline{fill:none;stroke:var(--roast);stroke-width:2;stroke-linecap:round}
+.chart .parea{fill:var(--rev);opacity:.1}
+.chart .mk{fill:var(--paper);stroke:var(--roast);stroke-width:2}
+.chart .mk.cur{fill:var(--roast);stroke:var(--paper)}
+.chart .mk.hov{fill:var(--roast);stroke:var(--paper);pointer-events:none}
+.chart .ml{font-size:12px;font-weight:600;fill:var(--roast)}
+.chart .xh{stroke:rgba(42,27,18,.4);stroke-width:1;pointer-events:none}
+.chart .plan{stroke:var(--roast-2);stroke-width:1.5;stroke-dasharray:6 5;pointer-events:none}
+.chart .pl{font-size:12px;font-weight:500;fill:var(--roast-2);pointer-events:none}
+.lk{display:inline-block;width:18px;border-top:2px dashed var(--roast-2)}
+@media (max-width:900px){
+  .model-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"tiles" "inputs" "side"}
+}
+@media (max-width:420px){.m-tiles .kpi-v{font-size:19px}.cup{padding:18px 16px 20px}}
+
+/* ---------- menu editor ---------- */
+.sub-t{font-family:var(--f-body);font-size:16px;font-weight:600;margin:0 0 14px}
+.mlist{list-style:none;margin:12px 0 0;padding:0}
+.ml-cat{margin:16px 0 4px;font-size:13px;font-weight:600;color:var(--roast-2)}
+.ml{display:flex;align-items:center;gap:4px;padding:9px 0;border-top:1px solid var(--line)}
+.ml-main{flex:1;min-width:0;display:grid}
+.ml-name{font-size:15px;font-weight:500;line-height:1.35;overflow-wrap:anywhere}
+.ml-meta{font-size:13px;color:var(--muted)}
+.check{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:15px;cursor:pointer}
+.check input{width:18px;height:18px;margin:0;accent-color:var(--roast)}
+.btn-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="application/json" id="gn-data">{"v":1,"fundPct":30,"tx":[],"ws":[],"menu":null,"plan":null,"updatedAt":null}</script>
+<script id="gn-app">
+(function () {
+  'use strict';
+
+  var HEAD = "<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Góc Nhỏ Coffee</title>\n<meta name=\"description\" content=\"Góc Nhỏ Coffee: quán cà phê khởi nghiệp của Nguyễn Linh Đan, mang hương vị Đắk Lắk về phố và dùng tiền lãi mở workshop miễn phí cho các em nhỏ.\">\n<link rel=\"icon\" href=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236b2817'/%3E%3Cpath d='M7 25V12a5 5 0 0 1 5-5h13' fill='none' stroke='%23f7f2e9' stroke-width='3' stroke-linecap='round'/%3E%3Cellipse cx='18.5' cy='18.5' rx='4.6' ry='6.4' transform='rotate(-38 18.5 18.5)' fill='%23e6b86a'/%3E%3C/svg%3E\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&amp;display=swap\">";
+
+  var IN_CATS = ['drinks', 'food', 'beans', 'other_in'];
+  var OUT_CATS = ['ingredients', 'rent', 'utilities', 'staff', 'equipment', 'marketing', 'other_out'];
+  var TRACKS = ['art', 'coffee'];
+  var ISO = /^\d{4}-\d{2}-\d{2}$/;
+  var PKEY = 'gn-pending-v1';
+  var MENU_CATS = ['coffee', 'other', 'food', 'take'];
+  /* planning model: [min, max, step] for each assumption */
+  var PLAN_LIMITS = {
+    cups: [0, 300, 5], price: [10000, 100000, 1000], costPct: [10, 70, 1], days: [20, 31, 1],
+    rent: [0, 50000000, 500000], staff: [0, 60000000, 500000], other: [0, 30000000, 500000],
+    fundPct: [0, 100, 5], wsCost: [0, 5000000, 100000]
+  };
+  var PLAN_KEYS = ['cups', 'price', 'costPct', 'days', 'rent', 'staff', 'other', 'wsCost'];
+  var DEFAULT_PLAN = { cups: 60, price: 32000, costPct: 35, days: 30, rent: 7000000, staff: 10000000, other: 4000000, wsCost: 1200000 };
+  /* draft menu: the café team replaces it from the ledger's Menu tab */
+  var DEFAULT_MENU = [
+    { id: 'm1', cat: 'coffee', vi: 'Cà phê đen phin', en: 'Black phin coffee', dvi: 'Cà phê Đắk Lắk pha phin, đậm và thơm.', den: 'Đắk Lắk coffee brewed in a phin, bold and fragrant.', price: 25000, cost: 7000, sig: false },
+    { id: 'm2', cat: 'coffee', vi: 'Cà phê sữa đá', en: 'Iced milk coffee', dvi: 'Cà phê phin với sữa đặc, uống cùng đá.', den: 'Phin coffee with condensed milk, over ice.', price: 29000, cost: 9000, sig: true },
+    { id: 'm3', cat: 'coffee', vi: 'Bạc xỉu', en: 'Bạc xỉu', dvi: 'Nhiều sữa, ít cà phê, ngọt dịu.', den: 'More milk than coffee, gently sweet.', price: 32000, cost: 10000, sig: false },
+    { id: 'm4', cat: 'coffee', vi: 'Cà phê muối', en: 'Salted cream coffee', dvi: 'Lớp kem muối mằn mặn trên nền cà phê phin.', den: 'A lightly salted cream over phin coffee.', price: 35000, cost: 11000, sig: true },
+    { id: 'm5', cat: 'coffee', vi: 'Cà phê ủ lạnh', en: 'Cold brew', dvi: 'Ủ lạnh nhiều giờ, vị êm và sạch.', den: 'Steeped cold for hours, smooth and clean.', price: 39000, cost: 12000, sig: false },
+    { id: 'm6', cat: 'other', vi: 'Cacao sữa đá', en: 'Iced cocoa', dvi: 'Cacao đậm vị với sữa tươi.', den: 'Rich cocoa with fresh milk.', price: 32000, cost: 10000, sig: false },
+    { id: 'm7', cat: 'other', vi: 'Trà đào cam sả', en: 'Peach, orange and lemongrass tea', dvi: 'Mát và thơm, cho người không uống cà phê.', den: 'Cool and fragrant, for non-coffee drinkers.', price: 35000, cost: 10000, sig: false },
+    { id: 'm8', cat: 'food', vi: 'Bánh ngọt trong ngày', en: 'Cake of the day', dvi: 'Món bánh thay đổi theo ngày.', den: 'A different cake each day.', price: 25000, cost: 10000, sig: false },
+    { id: 'm9', cat: 'take', vi: 'Cà phê bột Đắk Lắk 250 g', en: 'Ground Đắk Lắk coffee, 250 g', dvi: 'Để pha phin ở nhà.', den: 'For brewing with a phin at home.', price: 95000, cost: 55000, sig: false }
+  ];
+  var CUP_COLORS = { ing: '#c07a12', fixed: '#8f3b1e', keep: '#3a8fd6', fund: '#1b7a55' };
+
+  /* ------------------------------------------------------------------ text */
+  var T = {
+    vi: {
+      nav_story: 'Câu chuyện', nav_journey: 'Hành trình', nav_ws: 'Workshop', nav_ledger: 'Sổ doanh thu', nav_menu: 'Thực đơn', nav_model: 'Mô hình',
+      nav_label: 'Mục chính', menu: 'Menu', close: 'Đóng', lang_group: 'Ngôn ngữ', to_top: 'Góc Nhỏ Coffee, về đầu trang',
+      hero_title: 'Mang hương vị Đắk Lắk về phố.',
+      hero_lede: 'Góc Nhỏ Coffee bắt đầu từ một chuyến đi lên cao nguyên Đắk Lắk. Tiền lãi của quán được dùng để mở các lớp workshop miễn phí về nghệ thuật và cà phê cho các em nhỏ.',
+      hero_by: 'Người sáng lập: học sinh Nguyễn Linh Đan',
+      cta_story: 'Đọc câu chuyện', cta_ledger: 'Mở sổ doanh thu',
+      hero_art: 'Minh họa phin cà phê đang nhỏ giọt vào ly cà phê sữa, bên cạnh một cành cà phê',
+      story_h: 'Một góc nhỏ giữa thành phố',
+      story_side: 'Một chỗ ngồi giản dị để thưởng thức hương vị cao nguyên, và một nơi để sẻ chia với cộng đồng.',
+      quote: 'Sau chuyến đi Đắk Lắk, em muốn mang hương vị cà phê nơi ấy về thành phố. Góc Nhỏ là nơi em biến những gì học được từ đề tài nghiên cứu của mình thành một quán cà phê thật, và dùng tiền lãi để mở những lớp học miễn phí cho các em nhỏ.',
+      quote_by: 'Nguyễn Linh Đan, người sáng lập Góc Nhỏ Coffee',
+      journey_h: 'Từ cao nguyên đến góc phố',
+      steps: [
+        ['Lên Đắk Lắk', 'Chuyến đi đến vùng đất cà phê của Việt Nam, và mong muốn mang hương vị ấy về thành phố.'],
+        ['Nghiên cứu', 'Những gì học được từ đề tài nghiên cứu trước đó trở thành nền móng cho các quyết định khởi nghiệp.'],
+        ['Mở Góc Nhỏ', 'Khởi nghiệp với một quán cà phê nhỏ, mọi khoản thu chi được ghi lại minh bạch trong sổ doanh thu.'],
+        ['Trao lại', 'Tiền lãi được dùng để mở workshop miễn phí về nghệ thuật và cà phê cho các em nhỏ.']
+      ],
+      ws_h: 'Tiền lãi trở thành lớp học miễn phí',
+      ws_lede: 'Một phần lợi nhuận của Góc Nhỏ được dành riêng cho quỹ workshop. Các em nhỏ tham gia hoàn toàn miễn phí.',
+      track_art: 'Nghệ thuật', track_art_b: 'Những buổi vẽ và sáng tạo, nơi các em được tự do thể hiện mình.',
+      track_coffee: 'Cà phê', track_coffee_b: 'Các em tìm hiểu hành trình của hạt cà phê, từ cao nguyên Đắk Lắk đến chiếc ly trên bàn.',
+      st_held: 'workshop đã tổ chức', st_kids: 'lượt em nhỏ tham gia', st_share: 'lợi nhuận dành cho quỹ workshop',
+      ws_recent: 'Các buổi gần đây', ws_empty: 'Workshop đầu tiên đang được chuẩn bị.',
+      kids_n: function (n) { return n + ' em tham gia'; },
+      kids_unit: function () { return ' em'; },
+      footer_about: 'Góc Nhỏ Coffee là dự án khởi nghiệp của học sinh Nguyễn Linh Đan.',
+
+      ledger_h: 'Sổ doanh thu',
+      ledger_lede: 'Thu, chi và quỹ workshop của Góc Nhỏ Coffee, ghi lại theo từng khoản.',
+      updated: function (d) { return 'Cập nhật lần cuối ngày ' + d; },
+      period: 'Khoảng thời gian',
+      p_month: 'Tháng này', p_last: 'Tháng trước', p_year: 'Năm nay', p_all: 'Tất cả',
+      kpi_rev: 'Doanh thu', kpi_cost: 'Chi phí', kpi_profit: 'Lợi nhuận', kpi_fund: 'Quỹ workshop',
+      kpi_rev_s: function (n) { return n + ' khoản thu'; },
+      kpi_cost_s: function (n) { return n + ' khoản chi'; },
+      kpi_profit_s: function (m) { return 'Biên lợi nhuận ' + m + '%'; },
+      kpi_profit_none: 'Chưa có doanh thu',
+      kpi_fund_s: function (p, x) { return 'Trích ' + p + '% lợi nhuận toàn sổ, đã chi ' + x; },
+      chart_h: 'Thu và chi theo tháng',
+      chart_aria: 'Biểu đồ cột doanh thu và chi phí theo tháng',
+      chart_empty: 'Chưa có khoản thu chi nào để vẽ biểu đồ.',
+      show_table: 'Xem dạng bảng', show_chart: 'Xem biểu đồ',
+      th_month: 'Tháng', th_profit: 'Lợi nhuận',
+      tip_profit: 'Lợi nhuận',
+      by_rev: 'Doanh thu theo nhóm', by_cost: 'Chi phí theo nhóm', by_empty: 'Chưa có khoản nào trong khoảng này.',
+      entries_h: 'Các khoản thu chi', entries_empty: 'Chưa có khoản thu chi nào trong khoảng này.',
+      th_date: 'Ngày', th_entry: 'Nội dung', th_amount: 'Số tiền',
+      more: function (n) { return 'Xem thêm ' + n + ' khoản'; },
+      copy_csv: 'Sao chép CSV', copied: 'Đã sao chép toàn bộ sổ dạng CSV.', copy_fail: 'Không sao chép được. Hãy thử lại.',
+      wslog_h: 'Nhật ký workshop', wslog_empty: 'Chưa có buổi workshop nào trong khoảng này.',
+      th_ws: 'Buổi workshop', th_kids: 'Số em', th_cost: 'Chi phí',
+      editor_h: 'Ghi sổ', tab_tx: 'Thu / chi', tab_ws: 'Workshop', tab_fund: 'Quỹ',
+      f_type: 'Loại', f_in: 'Khoản thu', f_out: 'Khoản chi', f_date: 'Ngày', f_cat: 'Nhóm',
+      f_amount: 'Số tiền (₫)', f_amount_hint: 'Có thể gõ 45000, 45k hoặc 1,2tr', f_note: 'Ghi chú', f_optional: 'Không bắt buộc',
+      f_add_tx: 'Thêm vào sổ',
+      f_title: 'Tên buổi', f_title_ph: 'Ví dụ: Vẽ tranh cao nguyên', f_track: 'Chủ đề', f_kids: 'Số em tham gia',
+      f_ws_cost: 'Chi phí buổi (₫)', f_add_ws: 'Ghi lại workshop',
+      f_pct: 'Phần trăm lợi nhuận dành cho quỹ (%)',
+      f_pct_help: 'Quỹ workshop = lợi nhuận toàn sổ × tỷ lệ này, trừ chi phí các buổi workshop đã ghi.',
+      f_set_pct: 'Cập nhật tỷ lệ',
+      fs_profit: 'Lợi nhuận toàn sổ', fs_alloc: 'Trích vào quỹ', fs_spent: 'Đã chi cho workshop', fs_left: 'Quỹ còn lại',
+      err_amount: 'Nhập số tiền lớn hơn 0, ví dụ 45000 hoặc 45k.', err_date: 'Chọn ngày.',
+      err_title: 'Nhập tên buổi workshop.', err_kids: 'Nhập số em từ 0 trở lên.', err_cost: 'Nhập chi phí từ 0 trở lên, ví dụ 300k.',
+      err_pct: 'Nhập một số từ 0 đến 100.',
+      added_tx: 'Đã thêm. Bấm “Lưu vào sổ” để giữ lại.', added_ws: 'Đã ghi workshop. Bấm “Lưu vào sổ” để giữ lại.',
+      pct_set: 'Đã đổi tỷ lệ. Bấm “Lưu vào sổ” để giữ lại.', pct_same: 'Tỷ lệ này đang được dùng.',
+      pending_n: function (n) { return n + ' thay đổi chưa lưu'; },
+      discard: 'Bỏ thay đổi', save: 'Lưu vào sổ', saving: 'Đang lưu…', saved: 'Đã lưu vào sổ.', discarded: 'Đã bỏ các thay đổi chưa lưu.',
+      save_conflict: 'Sổ vừa được cập nhật ở nơi khác. Thay đổi của bạn vẫn còn, hãy bấm “Lưu vào sổ” lần nữa.',
+      save_denied: 'Tài khoản này chỉ xem được sổ, không ghi được.',
+      save_error: 'Chưa lưu được. Kiểm tra kết nối rồi bấm “Lưu vào sổ” lần nữa.',
+      unsaved: 'Chưa lưu', undo: 'Hoàn tác', del: 'Xóa', del_aria: function (s) { return 'Xóa ' + s; },
+      readonly: 'Bạn đang xem sổ ở chế độ chỉ đọc.',
+      empty_edit: 'Sổ đang trống. Hãy ghi khoản thu đầu tiên của quán ở khung “Ghi sổ”.',
+      empty_view: 'Sổ doanh thu sẽ được cập nhật khi quán bắt đầu bán hàng.',
+      demo_btn: 'Xem thử với dữ liệu mẫu',
+      demo_banner: 'Đang xem dữ liệu mẫu để thử giao diện. Đây không phải số liệu thật và sẽ không được lưu.',
+      demo_exit: 'Thoát xem thử', demo_locked: 'Thoát chế độ xem thử để ghi số liệu thật.',
+      menu_h: 'Thực đơn',
+      menu_lede: 'Cà phê Đắk Lắk pha phin là linh hồn của quán, cùng vài món cho người không uống cà phê.',
+      menu_unit: 'Giá tính bằng nghìn đồng (29K = 29.000 ₫).', menu_sig: 'Món đặc trưng', menu_edit: 'Sửa thực đơn',
+      mcats: { coffee: 'Cà phê', other: 'Không cà phê', food: 'Bánh', take: 'Mang về' },
+      model_h: 'Mỗi ly cà phê góp vào một lớp học',
+      model_lede: 'Góc Nhỏ bán cà phê với giá vừa phải, giữ chi phí gọn nhẹ và trích một phần lợi nhuận cho quỹ workshop. Kéo các thanh trượt để xem mô hình thay đổi thế nào.',
+      cup_h: function (p) { return 'Một ly trung bình giá ' + p + ' được chia thế nào'; },
+      part_ing: 'Nguyên liệu', part_fixed: 'Chi phí cố định', part_keep: 'Lợi nhuận giữ lại', part_fund: 'Quỹ workshop',
+      cup_fund_note: function (n, x) { return 'Với ' + n + ' ly mỗi ngày, mỗi ly góp khoảng ' + x + ' vào quỹ workshop.'; },
+      cup_loss: function (x) { return 'Ở mức bán này quán chưa hòa vốn, mỗi ly đang lỗ khoảng ' + x + '.'; },
+      cup_none: 'Tăng số ly bán mỗi ngày để xem một ly được chia thế nào.',
+      mg_sales: 'Bán hàng', mg_fixed: 'Chi phí cố định mỗi tháng', mg_ws: 'Workshop',
+      m_cups: 'Số ly bán mỗi ngày', m_price: 'Giá trung bình mỗi ly', m_cost: 'Chi phí nguyên liệu (% giá bán)', m_days: 'Số ngày mở cửa mỗi tháng',
+      m_rent: 'Mặt bằng', m_staff: 'Nhân sự', m_other: 'Điện, nước và chi phí khác', m_fund: 'Phần lợi nhuận cho quỹ workshop', m_wscost: 'Chi phí mỗi buổi workshop',
+      cups_n: function (n) { return n + ' ly'; }, days_n: function (n) { return n + ' ngày'; },
+      cups_month: function (n) { return group(n) + ' ly mỗi tháng'; },
+      hint_price: function (x) { return 'Đồ uống trong thực đơn trung bình ' + x + ' một ly'; },
+      hint_cost: function (p) { return 'Đồ uống trong thực đơn khoảng ' + p + '%'; },
+      mt_rev: 'Doanh thu mỗi tháng', mt_profit: 'Lợi nhuận mỗi tháng', mt_fund: 'Quỹ workshop mỗi tháng', mt_ws: 'Workshop miễn phí mỗi tháng',
+      mt_fund_s: function (p) { return 'Trích ' + p + '% lợi nhuận'; },
+      mt_ws_s: function (x) { return 'Mỗi buổi khoảng ' + x; },
+      mt_ws_free: 'Chưa đặt chi phí mỗi buổi',
+      sessions_n: function (n) { return n + ' buổi'; },
+      be_text: function (n) { return 'Hòa vốn khi bán ' + n + ' ly mỗi ngày'; },
+      be_none: 'Với giá và chi phí nguyên liệu này, quán không thể hòa vốn.',
+      mchart_h: 'Lợi nhuận mỗi tháng theo số ly bán mỗi ngày',
+      mchart_aria: 'Biểu đồ đường lợi nhuận mỗi tháng theo số ly bán mỗi ngày',
+      x_unit: 'ly/ngày', be_label: 'Hòa vốn',
+      tip_cups: function (n) { return n + ' ly mỗi ngày'; },
+      model_note: 'Đây là mô hình ước tính để lập kế hoạch, không phải kết quả thực tế. Số liệu thật được ghi trong Sổ doanh thu.',
+      plan_reset: 'Đặt lại', plan_save: 'Lưu làm kế hoạch',
+      plan_set: 'Đã cập nhật kế hoạch. Bấm “Lưu vào sổ” để giữ lại.', plan_same: 'Kế hoạch không thay đổi.',
+      actual: function (m, r, p, pct) { return 'Thực tế ' + m.charAt(0).toLowerCase() + m.slice(1) + ': doanh thu ' + r + ', lợi nhuận ' + p + ', đạt ' + pct + '% doanh thu dự tính.'; },
+      kpi_rev_plan: function (p, x) { return 'Đạt ' + p + '% kế hoạch tháng (' + x + ')'; },
+      legend_plan: 'Kế hoạch', tab_menu: 'Thực đơn',
+      me_add: 'Thêm món', me_new_h: 'Món mới', me_edit_h: 'Sửa món', me_vi: 'Tên món (tiếng Việt)', me_en: 'Tên món (tiếng Anh)',
+      me_cat: 'Nhóm', me_price: 'Giá bán (₫)', me_cost: 'Chi phí nguyên liệu (₫)', me_dvi: 'Mô tả (tiếng Việt)', me_den: 'Mô tả (tiếng Anh)',
+      me_sig: 'Món đặc trưng', me_save: 'Lưu món', me_cancel: 'Hủy', me_edit: 'Sửa',
+      me_margin: function (p) { return 'lãi gộp ' + p + '%'; },
+      me_help: 'Chi phí nguyên liệu dùng để tính lãi gộp và không hiển thị trên thực đơn.',
+      menu_saved: 'Đã cập nhật thực đơn. Bấm “Lưu vào sổ” để giữ lại.', menu_deleted: 'Đã xóa món. Bấm “Lưu vào sổ” để giữ lại.',
+      err_name: 'Nhập tên món.', err_price: 'Nhập giá bán lớn hơn 0, ví dụ 29k.', err_mcost: 'Nhập chi phí từ 0 trở lên, ví dụ 9k.',
+      cats: {
+        drinks: 'Đồ uống', food: 'Bánh và đồ ăn nhẹ', beans: 'Cà phê hạt, cà phê gói', other_in: 'Thu khác',
+        ingredients: 'Nguyên liệu', rent: 'Mặt bằng', utilities: 'Điện, nước, internet', staff: 'Nhân sự',
+        equipment: 'Dụng cụ, thiết bị', marketing: 'Quảng bá', other_out: 'Chi khác'
+      },
+      tracks: { art: 'Nghệ thuật', coffee: 'Cà phê' }
+    },
+    en: {
+      nav_story: 'Story', nav_journey: 'Journey', nav_ws: 'Workshops', nav_ledger: 'Revenue ledger', nav_menu: 'Menu', nav_model: 'Business model',
+      nav_label: 'Main', menu: 'Menu', close: 'Close', lang_group: 'Language', to_top: 'Góc Nhỏ Coffee, back to top',
+      hero_title: 'Bringing the taste of Đắk Lắk to the city.',
+      hero_lede: 'Góc Nhỏ Coffee began with a trip to the Đắk Lắk highlands. The café’s profits fund free art and coffee workshops for young children.',
+      hero_by: 'Founded by student Nguyễn Linh Đan',
+      cta_story: 'Read the story', cta_ledger: 'Open the revenue ledger',
+      hero_art: 'Illustration of a Vietnamese phin filter dripping coffee into a glass of milk coffee, beside a coffee branch',
+      story_h: 'A little corner in the city',
+      story_side: 'In Vietnamese, góc nhỏ means “a little corner”. It is a simple seat for the taste of the highlands, and a place to share with the community.',
+      quote: 'After my trip to Đắk Lắk, I wanted to bring the taste of its coffee back to the city. Góc Nhỏ is where I turned what I learned from my research project into a real café, and where its profits pay for free classes for young children.',
+      quote_by: 'Nguyễn Linh Đan, founder of Góc Nhỏ Coffee',
+      journey_h: 'From the highlands to a city corner',
+      steps: [
+        ['To Đắk Lắk', 'A trip to Vietnam’s coffee heartland, and the wish to bring its taste back to the city.'],
+        ['Research', 'What she learned from an earlier research project became the foundation for her decisions as a founder.'],
+        ['Opening Góc Nhỏ', 'Starting a small café, with every sale and cost recorded openly in a revenue ledger.'],
+        ['Giving back', 'Profits fund free art and coffee workshops for young children.']
+      ],
+      ws_h: 'Profit that becomes free classes',
+      ws_lede: 'A share of Góc Nhỏ’s profit goes into a workshop fund. Children take part completely free.',
+      track_art: 'Art', track_art_b: 'Drawing and making sessions where children are free to express themselves.',
+      track_coffee: 'Coffee', track_coffee_b: 'Children follow the journey of the coffee bean, from the Đắk Lắk highlands to the cup on the table.',
+      st_held: function (n) { return n === 1 ? 'workshop held' : 'workshops held'; },
+      st_kids: function (n) { return n === 1 ? 'child took part' : 'children took part'; },
+      st_share: 'of profit set aside for workshops',
+      ws_recent: 'Recent workshops', ws_empty: 'The first workshop is being prepared.',
+      kids_n: function (n) { return n === 1 ? '1 child' : n + ' children'; },
+      kids_unit: function (n) { return n === 1 ? ' child' : ' children'; },
+      footer_about: 'Góc Nhỏ Coffee is a student startup founded by Nguyễn Linh Đan.',
+
+      ledger_h: 'Revenue ledger',
+      ledger_lede: 'Income, costs and the workshop fund of Góc Nhỏ Coffee, recorded entry by entry.',
+      updated: function (d) { return 'Last updated ' + d; },
+      period: 'Period',
+      p_month: 'This month', p_last: 'Last month', p_year: 'This year', p_all: 'All time',
+      kpi_rev: 'Revenue', kpi_cost: 'Costs', kpi_profit: 'Profit', kpi_fund: 'Workshop fund',
+      kpi_rev_s: function (n) { return n === 1 ? '1 income entry' : n + ' income entries'; },
+      kpi_cost_s: function (n) { return n === 1 ? '1 cost entry' : n + ' cost entries'; },
+      kpi_profit_s: function (m) { return m + '% margin'; },
+      kpi_profit_none: 'No revenue yet',
+      kpi_fund_s: function (p, x) { return p + '% of all-time profit, ' + x + ' spent'; },
+      chart_h: 'Income and costs by month',
+      chart_aria: 'Column chart of monthly revenue and costs',
+      chart_empty: 'No entries yet to chart.',
+      show_table: 'Show as table', show_chart: 'Show chart',
+      th_month: 'Month', th_profit: 'Profit',
+      tip_profit: 'Profit',
+      by_rev: 'Revenue by category', by_cost: 'Costs by category', by_empty: 'Nothing in this period yet.',
+      entries_h: 'Entries', entries_empty: 'No entries in this period.',
+      th_date: 'Date', th_entry: 'Entry', th_amount: 'Amount',
+      more: function (n) { return 'Show ' + n + ' more'; },
+      copy_csv: 'Copy as CSV', copied: 'The whole ledger was copied as CSV.', copy_fail: 'Couldn’t copy. Try again.',
+      wslog_h: 'Workshop log', wslog_empty: 'No workshops in this period.',
+      th_ws: 'Workshop', th_kids: 'Children', th_cost: 'Cost',
+      editor_h: 'Add to the ledger', tab_tx: 'Income / cost', tab_ws: 'Workshop', tab_fund: 'Fund',
+      f_type: 'Type', f_in: 'Income', f_out: 'Cost', f_date: 'Date', f_cat: 'Category',
+      f_amount: 'Amount (₫)', f_amount_hint: 'You can type 45000, 45k or 1.2m', f_note: 'Note', f_optional: 'Optional',
+      f_add_tx: 'Add to ledger',
+      f_title: 'Title', f_title_ph: 'e.g. Painting the highlands', f_track: 'Track', f_kids: 'Children',
+      f_ws_cost: 'Session cost (₫)', f_add_ws: 'Log workshop',
+      f_pct: 'Share of profit for the fund (%)',
+      f_pct_help: 'Workshop fund = all-time profit × this share, minus the cost of the workshops you log.',
+      f_set_pct: 'Update share',
+      fs_profit: 'All-time profit', fs_alloc: 'Set aside', fs_spent: 'Spent on workshops', fs_left: 'Fund left',
+      err_amount: 'Enter an amount above 0, such as 45000 or 45k.', err_date: 'Pick a date.',
+      err_title: 'Enter a title for the workshop.', err_kids: 'Enter a number of children, 0 or more.', err_cost: 'Enter a cost of 0 or more, such as 300k.',
+      err_pct: 'Enter a number from 0 to 100.',
+      added_tx: 'Added. Press “Save to ledger” to keep it.', added_ws: 'Workshop logged. Press “Save to ledger” to keep it.',
+      pct_set: 'Share changed. Press “Save to ledger” to keep it.', pct_same: 'That share is already in use.',
+      pending_n: function (n) { return n === 1 ? '1 unsaved change' : n + ' unsaved changes'; },
+      discard: 'Discard changes', save: 'Save to ledger', saving: 'Saving…', saved: 'Saved to ledger.', discarded: 'Unsaved changes discarded.',
+      save_conflict: 'The ledger was just updated elsewhere. Your changes are still here; press “Save to ledger” again.',
+      save_denied: 'This account can view the ledger but can’t write to it.',
+      save_error: 'Couldn’t save. Check your connection, then press “Save to ledger” again.',
+      unsaved: 'Unsaved', undo: 'Undo', del: 'Delete', del_aria: function (s) { return 'Delete ' + s; },
+      readonly: 'You’re viewing this ledger in read-only mode.',
+      empty_edit: 'The ledger is empty. Add the café’s first sale in “Add to the ledger”.',
+      empty_view: 'The ledger fills in as the café starts trading.',
+      demo_btn: 'Preview with sample data',
+      demo_banner: 'You’re previewing sample data to try the layout. These are not real figures and won’t be saved.',
+      demo_exit: 'Exit preview', demo_locked: 'Exit the preview to record real figures.',
+      menu_h: 'Menu',
+      menu_lede: 'Đắk Lắk coffee brewed in a phin is the heart of the café, with a few choices for non-coffee drinkers.',
+      menu_unit: 'Prices in thousands of đồng (29K = ₫29,000).', menu_sig: 'Signature', menu_edit: 'Edit the menu',
+      mcats: { coffee: 'Coffee', other: 'Not coffee', food: 'Bakes', take: 'To take home' },
+      model_h: 'Every cup helps fund a class',
+      model_lede: 'Góc Nhỏ sells coffee at fair prices, keeps its costs lean and sets aside part of its profit for the workshop fund. Move the sliders to see how the model responds.',
+      cup_h: function (p) { return 'Where the money from an average ' + p + ' cup goes'; },
+      part_ing: 'Ingredients', part_fixed: 'Fixed costs', part_keep: 'Profit kept', part_fund: 'Workshop fund',
+      cup_fund_note: function (n, x) { return 'At ' + n + ' cups a day, each cup puts about ' + x + ' into the workshop fund.'; },
+      cup_loss: function (x) { return 'At this volume the café hasn’t broken even yet. Each cup loses about ' + x + '.'; },
+      cup_none: 'Raise the cups sold per day to see how a cup’s price is split.',
+      mg_sales: 'Sales', mg_fixed: 'Fixed costs per month', mg_ws: 'Workshops',
+      m_cups: 'Cups sold per day', m_price: 'Average price per cup', m_cost: 'Ingredient cost (% of price)', m_days: 'Days open per month',
+      m_rent: 'Rent', m_staff: 'Staff', m_other: 'Utilities and other costs', m_fund: 'Share of profit for workshops', m_wscost: 'Cost of one workshop',
+      cups_n: function (n) { return n === 1 ? '1 cup' : n + ' cups'; }, days_n: function (n) { return n + ' days'; },
+      cups_month: function (n) { return group(n) + ' cups a month'; },
+      hint_price: function (x) { return 'Menu drinks average ' + x + ' a cup'; },
+      hint_cost: function (p) { return 'Menu drinks run about ' + p + '%'; },
+      mt_rev: 'Revenue per month', mt_profit: 'Profit per month', mt_fund: 'Workshop fund per month', mt_ws: 'Free workshops per month',
+      mt_fund_s: function (p) { return p + '% of profit'; },
+      mt_ws_s: function (x) { return 'About ' + x + ' each'; },
+      mt_ws_free: 'No cost per workshop set',
+      sessions_n: function (n) { return n === 1 ? '1 session' : n + ' sessions'; },
+      be_text: function (n) { return 'Breaks even at ' + n + ' cups a day'; },
+      be_none: 'At this price and ingredient cost, the café can’t break even.',
+      mchart_h: 'Monthly profit by cups sold per day',
+      mchart_aria: 'Line chart of monthly profit by cups sold per day',
+      x_unit: 'cups/day', be_label: 'Break-even',
+      tip_cups: function (n) { return n + ' cups a day'; },
+      model_note: 'These are planning estimates, not actual results. Real figures are kept in the revenue ledger.',
+      plan_reset: 'Reset', plan_save: 'Save as the plan',
+      plan_set: 'Plan updated. Press “Save to ledger” to keep it.', plan_same: 'The plan hasn’t changed.',
+      actual: function (m, r, p, pct) { return 'Actual for ' + m + ': revenue ' + r + ', profit ' + p + ', ' + pct + '% of the projected revenue.'; },
+      kpi_rev_plan: function (p, x) { return p + '% of the monthly plan (' + x + ')'; },
+      legend_plan: 'Plan', tab_menu: 'Menu',
+      me_add: 'Add an item', me_new_h: 'New item', me_edit_h: 'Edit item', me_vi: 'Name (Vietnamese)', me_en: 'Name (English)',
+      me_cat: 'Section', me_price: 'Price (₫)', me_cost: 'Ingredient cost (₫)', me_dvi: 'Description (Vietnamese)', me_den: 'Description (English)',
+      me_sig: 'Signature item', me_save: 'Save item', me_cancel: 'Cancel', me_edit: 'Edit',
+      me_margin: function (p) { return p + '% gross margin'; },
+      me_help: 'Ingredient cost is used for margins and isn’t shown on the menu.',
+      menu_saved: 'Menu updated. Press “Save to ledger” to keep it.', menu_deleted: 'Item removed. Press “Save to ledger” to keep it.',
+      err_name: 'Enter a name for the item.', err_price: 'Enter a price above 0, such as 29k.', err_mcost: 'Enter a cost of 0 or more, such as 9k.',
+      cats: {
+        drinks: 'Drinks', food: 'Pastries and snacks', beans: 'Coffee beans and packs', other_in: 'Other income',
+        ingredients: 'Ingredients', rent: 'Rent', utilities: 'Utilities', staff: 'Staff',
+        equipment: 'Equipment', marketing: 'Marketing', other_out: 'Other costs'
+      },
+      tracks: { art: 'Art', coffee: 'Coffee' }
+    }
+  };
+  var MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  function t(key) {
+    var v = T[state.lang][key];
+    if (typeof v === 'function') return v.apply(null, Array.prototype.slice.call(arguments, 1));
+    return v == null ? key : v;
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* --------------------------------------------------------------- storage */
+  function store(kind) {
+    try { var s = window[kind]; var k = '__gn'; s.setItem(k, '1'); s.removeItem(k); return s; } catch (e) { return null; }
+  }
+  var LS = store('localStorage');
+  var SS = store('sessionStorage');
+  function sGet(s, k) { try { return s ? s.getItem(k) : null; } catch (e) { return null; } }
+  function sSet(s, k, v) { try { if (s) s.setItem(k, v); } catch (e) { /* ignore */ } }
+  function sDel(s, k) { try { if (s) s.removeItem(k); } catch (e) { /* ignore */ } }
+
+  /* ------------------------------------------------------------------ data */
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  function num(v, d) { v = Number(v); return isFinite(v) ? v : d; }
+  function str(v, max) { return (typeof v === 'string' ? v : '').slice(0, max || 200); }
+
+  function normTx(x) {
+    if (!x || typeof x !== 'object') return null;
+    var type = x.t === 'in' ? 'in' : (x.t === 'out' ? 'out' : null);
+    if (!type || !ISO.test(str(x.d, 10))) return null;
+    var a = Math.round(num(x.a, 0));
+    if (!(a > 0) || a >= 1e13) return null;
+    var cats = type === 'in' ? IN_CATS : OUT_CATS;
+    var c = cats.indexOf(x.c) >= 0 ? x.c : cats[cats.length - 1];
+    var id = str(x.id, 40);
+    if (!id) return null;
+    return { id: id, d: x.d, t: type, c: c, a: a, n: str(x.n, 160) };
+  }
+  function normWs(x) {
+    if (!x || typeof x !== 'object') return null;
+    if (!ISO.test(str(x.d, 10))) return null;
+    var title = str(x.title, 120).trim();
+    var id = str(x.id, 40);
+    if (!title || !id) return null;
+    var kids = Math.max(0, Math.min(100000, Math.round(num(x.kids, 0))));
+    var cost = Math.max(0, Math.min(1e12, Math.round(num(x.cost, 0))));
+    return { id: id, d: x.d, title: title, track: TRACKS.indexOf(x.track) >= 0 ? x.track : 'art', kids: kids, cost: cost, n: str(x.n, 160) };
+  }
+  function normMenuItem(x) {
+    if (!x || typeof x !== 'object') return null;
+    var id = str(x.id, 40), vi = str(x.vi, 60).trim();
+    if (!id || !vi) return null;
+    return {
+      id: id, cat: MENU_CATS.indexOf(x.cat) >= 0 ? x.cat : 'coffee', vi: vi, en: str(x.en, 60).trim(),
+      dvi: str(x.dvi, 160).trim(), den: str(x.den, 160).trim(),
+      price: Math.max(0, Math.min(1e9, Math.round(num(x.price, 0)))), cost: Math.max(0, Math.min(1e9, Math.round(num(x.cost, 0)))),
+      sig: x.sig === true
+    };
+  }
+  function normMenu(arr) {
+    var out = [];
+    (Array.isArray(arr) ? arr : []).forEach(function (x) { var n = normMenuItem(x); if (n && out.length < 60) out.push(n); });
+    return out;
+  }
+  function normPlan(p) {
+    var o = {};
+    p = p && typeof p === 'object' ? p : {};
+    PLAN_KEYS.forEach(function (k) {
+      var lim = PLAN_LIMITS[k];
+      o[k] = Math.max(lim[0], Math.min(lim[1], Math.round(num(p[k], DEFAULT_PLAN[k]))));
+    });
+    return o;
+  }
+  var DEFAULT_MENU_N = normMenu(DEFAULT_MENU);
+  function menuOf(d) { return d.menu || DEFAULT_MENU_N; }
+  function planOf(d) { return d.plan || DEFAULT_PLAN; }
+  function normalize(raw) {
+    var o = { v: 1, fundPct: 30, tx: [], ws: [], menu: null, plan: null, updatedAt: null };
+    if (raw && typeof raw === 'object') {
+      o.fundPct = Math.max(0, Math.min(100, Math.round(num(raw.fundPct, 30))));
+      (Array.isArray(raw.tx) ? raw.tx : []).forEach(function (x) { var n = normTx(x); if (n) o.tx.push(n); });
+      (Array.isArray(raw.ws) ? raw.ws : []).forEach(function (x) { var n = normWs(x); if (n) o.ws.push(n); });
+      if (Array.isArray(raw.menu)) o.menu = normMenu(raw.menu);
+      if (raw.plan && typeof raw.plan === 'object') o.plan = normPlan(raw.plan);
+      o.updatedAt = typeof raw.updatedAt === 'string' ? raw.updatedAt.slice(0, 40) : null;
+    }
+    return o;
+  }
+  function readData() {
+    var el = document.getElementById('gn-data');
+    var raw = null;
+    try { raw = JSON.parse(el ? el.textContent : 'null'); } catch (e) { raw = null; }
+    return normalize(raw);
+  }
+
+  /* Pending changes are kept as idempotent operations, so they survive a reload
+     and can be replayed on top of whatever version of the ledger is current. */
+  function validOp(op) {
+    if (!op || typeof op !== 'object') return false;
+    switch (op.op) {
+      case 'addTx': return !!normTx(op.item);
+      case 'addWs': return !!normWs(op.item);
+      case 'delTx': case 'delWs': return typeof op.id === 'string' && op.id.length > 0;
+      case 'setFund': return typeof op.value === 'number' && op.value >= 0 && op.value <= 100;
+      case 'setMenu': return Array.isArray(op.menu) && op.menu.length <= 60;
+      case 'setPlan': return !!op.plan && typeof op.plan === 'object';
+    }
+    return false;
+  }
+  function same(a, b) { return JSON.stringify(a) === JSON.stringify(b); }
+  function opApplied(op, d) {
+    switch (op.op) {
+      case 'addTx': return d.tx.some(function (x) { return x.id === op.item.id; });
+      case 'addWs': return d.ws.some(function (x) { return x.id === op.item.id; });
+      case 'delTx': return !d.tx.some(function (x) { return x.id === op.id; });
+      case 'delWs': return !d.ws.some(function (x) { return x.id === op.id; });
+      case 'setFund': return d.fundPct === op.value;
+      case 'setMenu': return same(menuOf(d), normMenu(op.menu));
+      case 'setPlan': return !!d.plan && same(d.plan, normPlan(op.plan));
+    }
+    return true;
+  }
+  function applyOps(d, ops) {
+    var c = { v: 1, fundPct: d.fundPct, tx: d.tx.slice(), ws: d.ws.slice(), menu: d.menu, plan: d.plan, updatedAt: d.updatedAt };
+    ops.forEach(function (op) {
+      if (op.op === 'addTx') { var a = normTx(op.item); if (a && !c.tx.some(function (x) { return x.id === a.id; })) c.tx.push(a); }
+      else if (op.op === 'addWs') { var w = normWs(op.item); if (w && !c.ws.some(function (x) { return x.id === w.id; })) c.ws.push(w); }
+      else if (op.op === 'delTx') { c.tx = c.tx.filter(function (x) { return x.id !== op.id; }); }
+      else if (op.op === 'delWs') { c.ws = c.ws.filter(function (x) { return x.id !== op.id; }); }
+      else if (op.op === 'setFund') { c.fundPct = op.value; }
+      else if (op.op === 'setMenu') { c.menu = normMenu(op.menu); }
+      else if (op.op === 'setPlan') { c.plan = normPlan(op.plan); }
+    });
+    return c;
+  }
+  function loadPending() {
+    var arr = [];
+    try { arr = JSON.parse(sGet(LS, PKEY) || '[]'); } catch (e) { arr = []; }
+    return Array.isArray(arr) ? arr.filter(validOp) : [];
+  }
+  function savePending() {
+    if (pending.length) sSet(LS, PKEY, JSON.stringify(pending)); else sDel(LS, PKEY);
+  }
+
+  /* The page is its own record: saving rebuilds this document with new data. */
+  function buildDocument(data) {
+    var css = document.getElementById('gn-css').textContent;
+    var app = document.getElementById('gn-app').textContent;
+    var json = JSON.stringify(data).replace(/</g, '\\u003c');
+    var open = '<' + 'script';
+    var close = '</' + 'script>';
+    return '<!DOCTYPE html>\n<html lang="vi">\n<head>\n' + HEAD + '\n<style id="gn-css">' + css + '</style>\n</head>\n<body>\n<div id="root"></div>\n' +
+      open + ' type="application/json" id="gn-data">' + json + close + '\n' + open + ' id="gn-app">' + app + close + '\n</body>\n</html>\n';
+  }
+
+  /* ----------------------------------------------------------------- dates */
+  function todayParts() { var n = new Date(); return { y: n.getFullYear(), m: n.getMonth() + 1, d: n.getDate() }; }
+  function todayISO() { var p = todayParts(); return p.y + '-' + pad(p.m) + '-' + pad(p.d); }
+  function monthKey(iso) { return parseInt(iso.slice(0, 4), 10) * 12 + parseInt(iso.slice(5, 7), 10) - 1; }
+  function fmtDate(iso) {
+    var y = iso.slice(0, 4), m = parseInt(iso.slice(5, 7), 10), d = parseInt(iso.slice(8, 10), 10);
+    if (state.lang === 'vi') return pad(d) + '/' + pad(m) + '/' + y;
+    return MONTHS_EN[m - 1].slice(0, 3) + ' ' + d + ', ' + y;
+  }
+  function monthLong(k) {
+    var y = Math.floor(k / 12), m = k % 12 + 1;
+    return state.lang === 'vi' ? 'Tháng ' + m + '/' + y : MONTHS_EN[m - 1] + ' ' + y;
+  }
+  function monthShort(k) {
+    var m = k % 12 + 1;
+    return state.lang === 'vi' ? 'T' + m : MONTHS_EN[m - 1].slice(0, 3);
+  }
+  function periodMatch(iso) {
+    if (state.period === 'all') return true;
+    var p = todayParts(), cur = p.y * 12 + p.m - 1, k = monthKey(iso);
+    if (state.period === 'month') return k === cur;
+    if (state.period === 'last') return k === cur - 1;
+    if (state.period === 'year') return Math.floor(k / 12) === p.y;
+    return true;
+  }
+  function monthInPeriod(k) {
+    var p = todayParts(), cur = p.y * 12 + p.m - 1;
+    if (state.period === 'month') return k === cur;
+    if (state.period === 'last') return k === cur - 1;
+    if (state.period === 'year') return Math.floor(k / 12) === p.y;
+    return true;
+  }
+
+  /* ---------------------------------------------------------------- money */
+  function locale() { return state.lang === 'vi' ? 'vi-VN' : 'en-US'; }
+  function group(n) {
+    var s = String(Math.round(Math.abs(n)));
+    var sep = state.lang === 'vi' ? '.' : ',';
+    return s.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  }
+  function money(n) {
+    var sign = n < 0 ? '−' : '';
+    return state.lang === 'vi' ? sign + group(n) + ' ₫' : sign + '₫' + group(n);
+  }
+  function signed(n, type) { return (type === 'in' ? '+' : '−') + money(n).replace('−', ''); }
+  function compact(v) {
+    var a = Math.abs(v), sign = v < 0 ? '−' : '';
+    var units = state.lang === 'vi' ? [[1e9, ' tỷ'], [1e6, ' tr'], [1e3, 'k']] : [[1e9, 'B'], [1e6, 'M'], [1e3, 'K']];
+    for (var i = 0; i < units.length; i++) {
+      if (a >= units[i][0]) {
+        var x = a / units[i][0];
+        var r = x >= 100 ? Math.round(x) : Math.round(x * 10) / 10;
+        var s = String(r);
+        if (state.lang === 'vi') s = s.replace('.', ',');
+        return sign + s + units[i][1];
+      }
+    }
+    return sign + String(Math.round(a));
+  }
+  function parseAmount(s) {
+    s = String(s || '').trim().toLowerCase().replace(/\s+/g, '').replace(/₫|đ|vnd|vnđ/g, '');
+    if (!s) return NaN;
+    var m = s.match(/^(\d+(?:[.,]\d+)?)(k|nghìn|ngàn|tr|triệu|m|tỷ|ty|b)$/);
+    if (m) {
+      var mult = { k: 1e3, 'nghìn': 1e3, 'ngàn': 1e3, tr: 1e6, 'triệu': 1e6, m: 1e6, 'tỷ': 1e9, ty: 1e9, b: 1e9 }[m[2]];
+      return Math.round(parseFloat(m[1].replace(',', '.')) * mult);
+    }
+    if (/^\d+$/.test(s) || /^\d{1,3}([.,]\d{3})+$/.test(s)) return parseInt(s.replace(/[.,]/g, ''), 10);
+    return NaN;
+  }
+  function sum(list, f) { var s = 0; for (var i = 0; i < list.length; i++) s += f ? f(list[i]) : list[i]; return s; }
+
+  /* ----------------------------------------------------------------- state */
+  function initLang() {
+    var saved = sGet(LS, 'gn-lang');
+    if (saved === 'vi' || saved === 'en') return saved;
+    var nl = (navigator.language || 'vi').toLowerCase();
+    return nl.indexOf('vi') === 0 ? 'vi' : 'en';
+  }
+  function viewFromHash() { return location.hash === '#ledger' ? 'ledger' : 'home'; }
+
+  var SAVED = readData();
+  var pending = loadPending().filter(function (op) { return !opApplied(op, SAVED); });
+  var artifactCap = null;
+  var state = {
+    lang: initLang(),
+    view: viewFromHash(),
+    period: 'month',
+    demo: false,
+    demoData: null,
+    edit: 'pending',
+    chartTable: false,
+    txLimit: 20,
+    tab: 'tx',
+    saving: false,
+    errors: {},
+    form: {
+      tx: { t: 'in', d: todayISO(), c: 'drinks', a: '', n: '' },
+      ws: { d: todayISO(), title: '', track: 'art', kids: '', cost: '', n: '' },
+      pct: ''
+    }
+  };
+  var lastSave = sGet(SS, 'gn-after-save');
+  var restoreScroll = 0;
+  if (lastSave) {
+    sDel(SS, 'gn-after-save');
+    var savedView = sGet(SS, 'gn-view');
+    if (savedView === 'ledger' && state.view !== 'ledger') { state.view = 'ledger'; try { location.hash = 'ledger'; } catch (e) { /* ignore */ } }
+    restoreScroll = parseInt(sGet(SS, 'gn-scroll') || '0', 10) || 0;
+  }
+  savePending();
+
+  function working() { return applyOps(SAVED, pending); }
+  function current() { return state.demo ? state.demoData : working(); }
+  function modelFrom(d) {
+    var m = {}, p = planOf(d);
+    PLAN_KEYS.forEach(function (k) { m[k] = p[k]; });
+    m.fundPct = d.fundPct;
+    return m;
+  }
+  state.model = modelFrom(working());
+  state.menuEdit = null;
+
+  /* ----------------------------------------------------------------- icons */
+  function logo(size) {
+    return '<svg class="logo" width="' + size + '" height="' + size + '" viewBox="0 0 32 32" aria-hidden="true">' +
+      '<path d="M5 27V12a7 7 0 0 1 7-7h15" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>' +
+      '<g transform="rotate(-38 19 19)"><ellipse class="bean" cx="19" cy="19" rx="5.4" ry="7.4"/>' +
+      '<path class="cut" d="M19 12.2c-2.3 2.3-2.3 4.5 0 6.8s2.3 4.5 0 6.8" fill="none" stroke-width="1.6" stroke-linecap="round"/></g></svg>';
+  }
+  var ICON = {
+    hills: '<path d="M2.5 19.5 9 9.8l3.4 5 2.5-3.5 6.6 8.2z"/><circle cx="17.2" cy="5.8" r="2.1"/>',
+    book: '<path d="M5.5 3.5h11.5a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H5.5z"/><path d="M8.5 3.5v17M11.5 8h4.5M11.5 11.5h4.5"/>',
+    cup: '<path d="M4 9.5h12v4.2a5.3 5.3 0 0 1-5.3 5.3H9.3A5.3 5.3 0 0 1 4 13.7z"/><path d="M16 10.5h1.6a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3.6c-.9 1 .9 2 0 3M12 3.6c-.9 1 .9 2 0 3"/>',
+    brush: '<path d="m14.2 4.3 5.5 5.5-7.6 7.6-5.5-5.5z"/><path d="M6.6 11.9c-2.3.2-3.6 1.9-3.6 4.1 0 1.2-.4 2.3-1.3 3.1 3.4.6 6.7-.7 7.4-3.7"/>'
+  };
+  function icon(name) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[name] + '</svg>';
+  }
+  function artDoodle() {
+    return '<svg viewBox="0 0 76 76" aria-hidden="true">' +
+      '<path d="M38 9C21 9 9 21 9 37c0 15.5 12.5 29 28 29 5.5 0 7.6-3.2 7.6-6.3 0-4.4-3.2-5.4-3.2-9.6 0-4 3-6.4 7.2-6.4h6.6C63.7 43.7 67 37.7 67 31 67 19 54.4 9 38 9z" fill="none" stroke="#e6b86a" stroke-width="2.4" stroke-linejoin="round"/>' +
+      '<circle cx="24" cy="30" r="5" fill="#e36a5c"/><circle cx="37.5" cy="21" r="5" fill="#e6b86a"/><circle cx="51.5" cy="27" r="5" fill="#f7f2e9"/><circle cx="23" cy="46" r="5" fill="#7cc4a0"/></svg>';
+  }
+  function beanDoodle() {
+    return '<svg viewBox="0 0 76 76" aria-hidden="true"><g transform="rotate(-32 34 40)">' +
+      '<ellipse cx="34" cy="40" rx="15" ry="21" fill="none" stroke="#e6b86a" stroke-width="2.4"/>' +
+      '<path d="M34 20c-6.5 6.5-6.5 13.2 0 20s6.5 13.5 0 20" fill="none" stroke="#e6b86a" stroke-width="2.4" stroke-linecap="round"/></g>' +
+      '<path d="M50 20c4-9 13-12 19-10-1 8-8 14-19 10z" fill="#7cc4a0"/><path d="M50 20c6-3 11-6 15-9" fill="none" stroke="#21463a" stroke-width="1.4" stroke-linecap="round"/></svg>';
+  }
+  function contours() {
+    var p = [];
+    for (var i = 0; i < 10; i++) {
+      var y = 40 + i * 64, a = 22 + (i % 3) * 11, b = 14 + ((i * 7) % 5) * 6;
+      p.push('<path vector-effect="non-scaling-stroke" d="M-40 ' + (y + a) + ' C200 ' + (y - b) + ' 420 ' + (y + a * 1.7) + ' 690 ' + (y + b * 0.4) +
+        ' S1130 ' + (y - a * 1.3) + ' 1480 ' + (y + b) + '"/>');
+    }
+    return '<svg class="contours" viewBox="0 0 1440 700" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1">' + p.join('') + '</g></svg>';
+  }
+  function phin() {
+    var glass = 'M104 198H256L243 386Q242 398 231 398H129Q118 398 117 386Z';
+    return '<svg class="phin" viewBox="0 0 360 440" role="img" aria-label="' + esc(t('hero_art')) + '">' +
+      '<defs><clipPath id="gn-in"><path d="M110 201H250L238.4 384Q237.6 392 230 392H130Q122.4 392 121.6 384Z"/></clipPath></defs>' +
+      /* coffee branch */
+      '<g aria-hidden="true">' +
+        '<path d="M14 430C58 410 100 401 156 406" fill="none" stroke="#3c6b4b" stroke-width="3" stroke-linecap="round"/>' +
+        '<path d="M44 416C30 396 42 375 70 377 70 398 60 412 44 416Z" fill="#4f8a5e"/>' +
+        '<path d="M44 416C52 400 58 391 68 380" fill="none" stroke="#2f5a3c" stroke-width="1.3"/>' +
+        '<path d="M84 405C80 382 98 366 124 374 118 395 103 406 84 405Z" fill="#5f9a6c"/>' +
+        '<path d="M84 405C96 393 106 384 121 375" fill="none" stroke="#2f5a3c" stroke-width="1.3"/>' +
+        '<path d="M70 418C60 436 70 448 92 446 92 430 84 420 70 418Z" fill="#4f8a5e"/>' +
+        '<circle cx="128" cy="414" r="7.5" fill="#d8443c"/><circle cx="142" cy="420" r="7" fill="#c23a33"/><circle cx="137" cy="406" r="6.5" fill="#e0574c"/>' +
+        '<circle cx="125.5" cy="411.5" r="2" fill="#f7f2e9" opacity=".7"/><circle cx="134.8" cy="403.6" r="1.8" fill="#f7f2e9" opacity=".7"/>' +
+      '</g>' +
+      /* glass body */
+      '<path d="' + glass + '" fill="#f7f2e9" fill-opacity=".07"/>' +
+      '<g clip-path="url(#gn-in)">' +
+        '<rect x="100" y="352" width="160" height="44" fill="#f1e2c1"/>' +
+        '<path class="drop" d="M180 214C180 214 175.4 220.2 175.4 223.2A4.6 4.6 0 0 0 184.6 223.2C184.6 220.2 180 214 180 214Z" fill="#e6b86a"/>' +
+        '<path class="drop d2" d="M180 214C180 214 175.4 220.2 175.4 223.2A4.6 4.6 0 0 0 184.6 223.2C184.6 220.2 180 214 180 214Z" fill="#e6b86a"/>' +
+        '<g class="coffee"><rect x="100" y="262" width="160" height="92" fill="#2a140b"/><rect x="100" y="262" width="160" height="6" fill="#7a4526"/>' +
+          '<path d="M100 346h160v8H100z" fill="#5b3420" opacity=".55"/></g>' +
+      '</g>' +
+      '<path d="' + glass + '" fill="none" stroke="#f7f2e9" stroke-width="2.6" stroke-linejoin="round"/>' +
+      '<path d="M119.5 384H240.5" stroke="#f7f2e9" stroke-opacity=".45" stroke-width="1.5"/>' +
+      '<path d="M121 216L130 364" stroke="#f7f2e9" stroke-opacity=".32" stroke-width="3.2" stroke-linecap="round"/>' +
+      '<g transform="translate(200 296)" opacity=".85"><path d="M2 22V8a5 5 0 0 1 5-5h13" fill="none" stroke="#f7f2e9" stroke-width="2.4" stroke-linecap="round"/>' +
+        '<ellipse cx="13" cy="15" rx="3.8" ry="5.2" transform="rotate(-38 13 15)" fill="#e6b86a"/></g>' +
+      /* phin */
+      '<g stroke="#f7f2e9" stroke-width="2.6" stroke-linejoin="round">' +
+        '<path d="M152 196v9a28 5.2 0 0 0 56 0v-9" fill="#4d1c10"/>' +
+        '<ellipse cx="180" cy="196" rx="92" ry="13" fill="#7b3420"/>' +
+        '<path d="M130 126V188A50 9 0 0 0 230 188V126" fill="#5e2414"/>' +
+        '<ellipse cx="180" cy="126" rx="50" ry="9" fill="#7b3420"/>' +
+        '<ellipse cx="180" cy="120" rx="56" ry="9.5" fill="#6a2a19"/>' +
+        '<path d="M124 120C127 94 233 94 236 120" fill="#5e2414"/>' +
+        '<path d="M171 99V91a9 4.5 0 0 1 18 0V99" fill="#7b3420"/>' +
+      '</g>' +
+      '<path d="M140 136V182" stroke="#f7f2e9" stroke-opacity=".3" stroke-width="3" stroke-linecap="round"/>' +
+      '</svg>';
+  }
+
+  /* ------------------------------------------------------------------ views */
+  function navHTML() {
+    var L = state.view === 'ledger';
+    function link(target, label, current) {
+      return '<button class="nav-link" data-go="' + target + '"' + (current ? ' aria-current="page"' : '') + '>' + esc(label) + '</button>';
+    }
+    return '<header class="nav" id="nav"><div class="wrap nav-in">' +
+      '<button class="brand" data-go="top" aria-label="' + esc(t('to_top')) + '">' + logo(30) + '<span>Góc Nhỏ<small>Coffee</small></span></button>' +
+      '<nav class="nav-links" id="nav-links" aria-label="' + esc(t('nav_label')) + '">' +
+        link('story', t('nav_story')) + link('menu', t('nav_menu')) + link('model', t('nav_model')) + link('workshops', t('nav_ws')) + link('ledger', t('nav_ledger'), L) +
+      '</nav>' +
+      '<div class="lang" role="group" aria-label="' + esc(t('lang_group')) + '">' +
+        '<button data-lang="vi" data-fk="lang-vi" aria-pressed="' + (state.lang === 'vi') + '" lang="vi">VI</button>' +
+        '<button data-lang="en" data-fk="lang-en" aria-pressed="' + (state.lang === 'en') + '" lang="en">EN</button>' +
+      '</div>' +
+      '<button class="menu-btn" data-act="menu" aria-expanded="false" aria-controls="nav-links">' + esc(t('menu')) + '</button>' +
+      '</div></header>';
+  }
+
+  function wsStats(d) {
+    return { held: d.ws.length, kids: sum(d.ws, function (w) { return w.kids; }) };
+  }
+  function byDateDesc(a, b) { return a.d < b.d ? 1 : a.d > b.d ? -1 : (a.id < b.id ? 1 : a.id > b.id ? -1 : 0); }
+
+  function homeHTML() {
+    var d = working();
+    var st = wsStats(d);
+    var steps = t('steps');
+    var stepIcons = ['hills', 'book', 'cup', 'brush'];
+    var recent = d.ws.slice().sort(byDateDesc).slice(0, 4);
+
+    var h = '';
+    h += '<section class="hero" id="top">' + contours() + '<div class="wrap hero-grid">' +
+      '<div class="hero-copy"><h1>' + esc(t('hero_title')) + '</h1>' +
+      '<p class="hero-lede">' + esc(t('hero_lede')) + '</p>' +
+      '<div class="hero-actions"><button class="btn btn-crema" data-go="story">' + esc(t('cta_story')) + '</button>' +
+      '<button class="btn btn-line-light" data-go="ledger">' + esc(t('cta_ledger')) + '</button></div>' +
+      '<p class="hero-by">' + esc(t('hero_by')) + '</p></div>' +
+      '<div class="hero-art">' + phin() + '</div>' +
+      '</div></section>';
+
+    h += '<section class="section" id="story"><div class="wrap story-grid">' +
+      '<div><h2 class="h-display">' + esc(t('story_h')) + '</h2><p class="story-side">' + esc(t('story_side')) + '</p></div>' +
+      '<figure class="quote"><blockquote><p>“' + esc(t('quote')) + '”</p></blockquote><figcaption>' + esc(t('quote_by')) + '</figcaption></figure>' +
+      '</div></section>';
+
+    h += '<section class="section journey" id="journey"><div class="wrap"><h2 class="h-display">' + esc(t('journey_h')) + '</h2><ol class="route">';
+    steps.forEach(function (s, i) {
+      h += '<li class="stop"><div class="stop-mark">' + icon(stepIcons[i]) + '<span class="stop-n" aria-hidden="true">' + (i + 1) + '</span></div>' +
+        '<h3>' + esc(s[0]) + '</h3><p>' + esc(s[1]) + '</p></li>';
+    });
+    h += '</ol></div></section>';
+
+    h += menuHTML(menuOf(d)) + modelHTML(d);
+
+    h += '<section class="section workshops" id="workshops"><div class="wrap"><div class="ws-grid">' +
+      '<div><h2 class="h-display">' + esc(t('ws_h')) + '</h2><p class="ws-lede">' + esc(t('ws_lede')) + '</p>' +
+      '<div class="ws-stats">' +
+        (st.held > 0
+          ? '<div class="stat"><span class="stat-v">' + st.held + '</span><span class="stat-l">' + esc(t('st_held', st.held)) + '</span></div>' +
+            '<div class="stat"><span class="stat-v">' + st.kids + '</span><span class="stat-l">' + esc(t('st_kids', st.kids)) + '</span></div>'
+          : '') +
+        '<div class="stat"><span class="stat-v">' + d.fundPct + '%</span><span class="stat-l">' + esc(t('st_share')) + '</span></div>' +
+      '</div></div>' +
+      '<div class="tracks">' +
+        '<article class="track">' + artDoodle() + '<div><h3>' + esc(t('track_art')) + '</h3><p>' + esc(t('track_art_b')) + '</p></div></article>' +
+        '<article class="track">' + beanDoodle() + '<div><h3>' + esc(t('track_coffee')) + '</h3><p>' + esc(t('track_coffee_b')) + '</p></div></article>' +
+      '</div></div>' +
+      '<div class="ws-recent"><h3>' + esc(t('ws_recent')) + '</h3>';
+    if (recent.length) {
+      h += '<ul class="ws-list">';
+      recent.forEach(function (w) {
+        h += '<li class="ws-item"><div class="ws-date">' + esc(fmtDate(w.d)) + '</div><div class="ws-title">' + esc(w.title) + '</div>' +
+          '<div class="ws-meta"><span class="ws-chip ' + w.track + '">' + esc(T[state.lang].tracks[w.track]) + '</span><span>' + esc(t('kids_n', w.kids)) + '</span></div></li>';
+      });
+      h += '</ul>';
+    } else {
+      h += '<p class="ws-empty">' + esc(t('ws_empty')) + '</p>';
+    }
+    h += '</div></div></section>';
+    return h;
+  }
+
+  /* ------------------------------------------------------------ menu + model */
+  function kPrice(v) {
+    var s = String(Math.round(v / 100) / 10);
+    if (state.lang === 'vi') s = s.replace('.', ',');
+    return s + 'K';
+  }
+  function cmoney(v) { return state.lang === 'vi' ? compact(v) + ' ₫' : (v < 0 ? '−₫' + compact(-v) : '₫' + compact(v)); }
+  function itemName(it) { return state.lang === 'en' && it.en ? it.en : it.vi; }
+  function itemDesc(it) { return state.lang === 'en' && it.den ? it.den : it.dvi; }
+  function menuDrinkStats(menu) {
+    var drinks = menu.filter(function (i) { return (i.cat === 'coffee' || i.cat === 'other') && i.price > 0; });
+    if (!drinks.length) return null;
+    var p = sum(drinks, function (i) { return i.price; }), c = sum(drinks, function (i) { return i.cost; });
+    return { avg: p / drinks.length, costPct: Math.round(c / p * 100) };
+  }
+
+  function menuHTML(menu) {
+    var anySig = menu.some(function (i) { return i.sig; });
+    var h = '<section class="section menu" id="menu"><div class="wrap">' +
+      '<div class="menu-head"><h2 class="h-display">' + esc(t('menu_h')) + '</h2><div class="menu-intro"><p class="menu-lede">' + esc(t('menu_lede')) + '</p>' +
+      '<button class="link-btn owner-only" data-act="edit-menu"' + (state.edit === 'yes' ? '' : ' hidden') + '>' + esc(t('menu_edit')) + '</button></div></div>' +
+      '<div class="menu-board">';
+    MENU_CATS.forEach(function (cat) {
+      var items = menu.filter(function (i) { return i.cat === cat; });
+      if (!items.length) return;
+      h += '<div class="mgroup"><h3>' + esc(T[state.lang].mcats[cat]) + '</h3><ul class="mitems">';
+      items.forEach(function (it) {
+        var desc = itemDesc(it);
+        h += '<li class="mi' + (it.sig ? ' sig' : '') + '"><div class="mi-top"><span class="mi-name">' + esc(itemName(it)) +
+          (it.sig ? '<span class="sr-only"> (' + esc(t('menu_sig')) + ')</span>' : '') + '</span><span class="mi-lead" aria-hidden="true"></span>' +
+          '<span class="mi-price">' + esc(kPrice(it.price)) + '</span></div>' + (desc ? '<p class="mi-desc">' + esc(desc) + '</p>' : '') + '</li>';
+      });
+      h += '</ul></div>';
+    });
+    h += '</div><p class="menu-foot">' + (anySig ? '<span class="sig-key">' + esc(t('menu_sig')) + '</span>' : '') + '<span>' + esc(t('menu_unit')) + '</span></p></div></section>';
+    return h;
+  }
+
+  var MODEL_GROUPS = [
+    ['mg_sales', [['cups', 'm_cups'], ['price', 'm_price'], ['costPct', 'm_cost'], ['days', 'm_days']]],
+    ['mg_fixed', [['rent', 'm_rent'], ['staff', 'm_staff'], ['other', 'm_other']]],
+    ['mg_ws', [['fundPct', 'm_fund'], ['wsCost', 'm_wscost']]]
+  ];
+  function modelVal(k, v) {
+    if (k === 'cups') return t('cups_n', v);
+    if (k === 'days') return t('days_n', v);
+    if (k === 'costPct' || k === 'fundPct') return v + '%';
+    return money(v);
+  }
+  function modelHTML(d) {
+    var m = state.model, ms = menuDrinkStats(menuOf(d));
+    var h = '<section class="section model" id="model"><div class="wrap">' +
+      '<div class="model-head"><h2 class="h-display">' + esc(t('model_h')) + '</h2><p class="model-lede">' + esc(t('model_lede')) + '</p></div>' +
+      '<div class="cup" id="m-cup"></div>' +
+      '<div class="model-grid"><form class="model-inputs" id="m-form" novalidate>';
+    MODEL_GROUPS.forEach(function (g) {
+      h += '<fieldset class="m-group"><legend>' + esc(t(g[0])) + '</legend>';
+      g[1].forEach(function (f) {
+        var k = f[0], lim = PLAN_LIMITS[k], hint = '';
+        if (k === 'price' && ms) hint = t('hint_price', kPrice(ms.avg));
+        if (k === 'costPct' && ms) hint = t('hint_cost', ms.costPct);
+        h += '<div class="sl"><div class="sl-top"><label for="m-' + k + '">' + esc(t(f[1])) + '</label>' +
+          '<output id="m-' + k + '-v" for="m-' + k + '">' + esc(modelVal(k, m[k])) + '</output></div>' +
+          '<input type="range" id="m-' + k + '" name="' + k + '" min="' + lim[0] + '" max="' + lim[1] + '" step="' + lim[2] + '" value="' + m[k] + '"' +
+          (hint ? ' aria-describedby="m-' + k + '-h"' : '') + '>' +
+          (hint ? '<span class="hint" id="m-' + k + '-h">' + esc(hint) + '</span>' : '') + '</div>';
+      });
+      h += '</fieldset>';
+    });
+    h += '</form><div class="m-tiles" id="m-tiles"></div><div class="m-side">' +
+      '<section class="panel m-chart"><div class="panel-h"><h3 class="panel-t">' + esc(t('mchart_h')) + '</h3></div><div class="chart" id="m-chart"></div></section>' +
+      '<div id="m-actual"></div><p class="m-note">' + esc(t('model_note')) + '</p>' +
+      '<div class="m-actions"><button class="btn btn-line" type="button" data-act="plan-reset" data-fk="plan-reset">' + esc(t('plan_reset')) + '</button>' +
+      '<button class="btn btn-dark owner-only" type="button" data-act="plan-save"' + (state.edit === 'yes' ? '' : ' hidden') + '>' + esc(t('plan_save')) + '</button></div>' +
+      '</div></div></div></section>';
+    return h;
+  }
+
+  function modelCalc(m) {
+    var fixed = m.rent + m.staff + m.other;
+    var cupsMonth = m.cups * m.days;
+    var unitGross = m.price * (1 - m.costPct / 100);
+    var revenue = cupsMonth * m.price;
+    var profit = cupsMonth * unitGross - fixed;
+    var fund = Math.max(0, profit) * m.fundPct / 100;
+    return {
+      fixed: fixed, cupsMonth: cupsMonth, unitGross: unitGross, revenue: revenue, profit: profit, fund: fund,
+      sessions: m.wsCost > 0 ? Math.floor(fund / m.wsCost) : null,
+      beExact: unitGross > 0 && m.days > 0 ? fixed / (unitGross * m.days) : null,
+      be: unitGross > 0 && m.days > 0 ? Math.ceil(fixed / (unitGross * m.days)) : null,
+      profitAt: function (c) { return c * m.days * unitGross - fixed; }
+    };
+  }
+  function lum(hex) {
+    function f(i) { var x = parseInt(hex.slice(i, i + 2), 16) / 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); }
+    return 0.2126 * f(1) + 0.7152 * f(3) + 0.0722 * f(5);
+  }
+  function cupHTML(c, m, width) {
+    var h = '<h3 class="cup-h">' + esc(t('cup_h', money(m.price))) + '</h3>';
+    if (!c.cupsMonth || !(m.price > 0)) return h + '<p class="cup-note">' + esc(t('cup_none')) + '</p>';
+    var ing = m.price * m.costPct / 100, fx = c.fixed / c.cupsMonth, pr = m.price - ing - fx;
+    var parts = pr > 0
+      ? [['ing', ing], ['fixed', fx], ['keep', pr * (1 - m.fundPct / 100)], ['fund', pr * m.fundPct / 100]]
+      : [['ing', Math.min(ing, m.price)], ['fixed', Math.max(0, m.price - ing)]];
+    parts = parts.filter(function (p) { return p[1] >= 1; });
+    var avail = Math.max(1, width - (parts.length - 1) * 2), bar = '', legend = '', aria = [];
+    parts.forEach(function (p) {
+      var name = t('part_' + p[0]), share = p[1] / m.price, label = kPrice(p[1]);
+      var fits = share * avail >= label.length * 7.8 + 18;
+      var col = CUP_COLORS[p[0]], ink = lum(col) > 0.2 ? '#2a1b12' : '#ffffff';
+      bar += '<span class="seg" style="flex:' + share.toFixed(4) + ' 1 0;background:' + col + ';color:' + ink + '">' + (fits ? esc(label) : '') + '</span>';
+      legend += '<li><i class="sw" style="background:' + col + '"></i>' + esc(name) + (fits ? '' : ' <b>' + esc(label) + '</b>') + '</li>';
+      aria.push(name + ' ' + money(Math.round(p[1])));
+    });
+    h += '<div class="cup-bar" role="img" aria-label="' + esc(aria.join(', ')) + '">' + bar + '</div><ul class="cup-legend">' + legend + '</ul>';
+    h += '<p class="cup-note">' + esc(pr > 0
+      ? t('cup_fund_note', m.cups, money(Math.round(pr * m.fundPct / 100 / 100) * 100))
+      : t('cup_loss', money(Math.round(-pr / 100) * 100))) + '</p>';
+    return h;
+  }
+  function niceRange(lo, hi) {
+    if (!(hi > lo)) hi = lo + 1;
+    var raw = (hi - lo) / 4, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), steps = [1, 2, 2.5, 5, 10], step = p * 10;
+    for (var i = 0; i < steps.length; i++) { if (steps[i] * p >= raw) { step = steps[i] * p; break; } }
+    var a = Math.floor(lo / step) * step, b = Math.ceil(hi / step) * step, out = [];
+    for (var v = a; v <= b + step / 1000; v += step) out.push(Math.round(v));
+    return out;
+  }
+  var modelW = -1;
+  function drawModelChart(c, m) {
+    var host = document.getElementById('m-chart');
+    if (!host) return;
+    modelW = Math.floor(host.clientWidth);
+    var W = Math.max(260, modelW), narrow = W < 480;
+    var H = narrow ? 230 : 260, padL = 52, padR = 14, padT = 18, padB = 42;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var xMax = Math.min(400, Math.max(100, Math.ceil(Math.max(m.cups * 1.4, (c.be || 0) * 1.6) / 50) * 50));
+    var p0 = c.profitAt(0), p1 = c.profitAt(xMax);
+    var ticks = niceRange(Math.min(0, p0, p1), Math.max(0, p0, p1));
+    var y0 = ticks[0], y1 = ticks[ticks.length - 1];
+    function X(v) { return padL + v / xMax * plotW; }
+    function Y(v) { return padT + (y1 - v) / (y1 - y0) * plotH; }
+    var s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' +
+      esc(t('mchart_aria') + '. ' + (c.be === null ? t('be_none') : t('be_text', c.be))) + '">';
+    ticks.forEach(function (tv) {
+      var yy = Math.round(Y(tv)) + 0.5;
+      s += '<line class="' + (tv === 0 ? 'axis' : 'grid') + '" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + yy + '" y2="' + yy + '"/>' +
+        '<text class="tick" x="' + (padL - 8) + '" y="' + (yy + 4) + '" text-anchor="end">' + esc(compact(tv)) + '</text>';
+    });
+    var xStep = xMax <= 150 ? 25 : (narrow && xMax > 250 ? 100 : 50);
+    for (var xv = 0; xv <= xMax; xv += xStep) {
+      s += '<text class="xl" x="' + X(xv).toFixed(1) + '" y="' + (padT + plotH + 18) + '" text-anchor="middle">' + xv + '</text>';
+    }
+    s += '<text class="xl" x="' + (W - padR) + '" y="' + (padT + plotH + 35) + '" text-anchor="end">' + esc(t('x_unit')) + '</text>';
+    if (c.beExact !== null && c.beExact < xMax) {
+      s += '<path class="parea" d="M' + X(c.beExact).toFixed(1) + ' ' + Y(0).toFixed(1) + 'L' + X(xMax).toFixed(1) + ' ' + Y(p1).toFixed(1) +
+        'L' + X(xMax).toFixed(1) + ' ' + Y(0).toFixed(1) + 'Z"/>';
+    }
+    s += '<line class="pline" x1="' + X(0).toFixed(1) + '" y1="' + Y(p0).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(p1).toFixed(1) + '"/>';
+    if (c.beExact !== null && c.beExact <= xMax) {
+      var bx = X(c.beExact), by = Y(0);
+      s += '<circle class="mk" cx="' + bx.toFixed(1) + '" cy="' + by.toFixed(1) + '" r="5"/>' +
+        '<text class="ml" x="' + Math.max(padL + 4, bx - 9).toFixed(1) + '" y="' + (by - 10).toFixed(1) + '" text-anchor="' + (bx - 9 < padL + 70 ? 'start' : 'end') + '">' +
+        esc(t('be_label') + ' ' + c.be) + '</text>';
+    }
+    var cx = X(m.cups), cy = Y(c.profit);
+    s += '<circle class="mk cur" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="5.5"/>' +
+      '<text class="ml" x="' + (cx + 10).toFixed(1) + '" y="' + (cy + 18).toFixed(1) + '">' + esc(cmoney(Math.round(c.profit))) + '</text>';
+    s += '<line class="xh" id="m-xh" x1="0" x2="0" y1="' + padT + '" y2="' + (padT + plotH) + '" visibility="hidden"/>' +
+      '<circle class="mk hov" id="m-hd" cx="0" cy="0" r="4.5" visibility="hidden"/>' +
+      '<rect id="m-hit" x="' + padL + '" y="' + padT + '" width="' + plotW + '" height="' + plotH + '" fill="transparent"/>';
+    s += '</svg><div class="tip" id="m-tip" aria-hidden="true"></div>';
+    host.innerHTML = s;
+    host.style.height = H + 'px';
+
+    var hit = host.querySelector('#m-hit'), xh = host.querySelector('#m-xh'), hd = host.querySelector('#m-hd'), tip = host.querySelector('#m-tip');
+    function row(val, name, key) {
+      var r = document.createElement('div'); r.className = 'tip-row';
+      var k = document.createElement('span'); k.className = 'tip-key'; if (key) k.style.background = key;
+      var b = document.createElement('b'); b.textContent = val;
+      var i = document.createElement('i'); i.textContent = name;
+      r.appendChild(k); r.appendChild(b); r.appendChild(i); return r;
+    }
+    function move(ev) {
+      var box = host.getBoundingClientRect();
+      var px = ev.clientX - box.left;
+      var cups = Math.max(0, Math.min(xMax, Math.round((px - padL) / plotW * xMax / 5) * 5));
+      var pv = c.profitAt(cups), xx = X(cups), yy = Y(pv);
+      xh.setAttribute('x1', xx); xh.setAttribute('x2', xx); xh.setAttribute('visibility', 'visible');
+      hd.setAttribute('cx', xx); hd.setAttribute('cy', yy); hd.setAttribute('visibility', 'visible');
+      tip.textContent = '';
+      var hdr = document.createElement('div'); hdr.className = 'tip-h'; hdr.textContent = t('tip_cups', cups); tip.appendChild(hdr);
+      tip.appendChild(row(money(Math.round(cups * m.days * m.price)), t('mt_rev'), null));
+      tip.appendChild(row(money(Math.round(pv)), t('mt_profit'), '#f7f2e9'));
+      tip.appendChild(row(money(Math.round(Math.max(0, pv) * m.fundPct / 100)), t('mt_fund'), null));
+      var tw = tip.offsetWidth, th = tip.offsetHeight;
+      var left = xx + 14 + tw > W ? xx - 14 - tw : xx + 14;
+      var top = Math.max(0, Math.min(H - th, yy - th / 2));
+      tip.style.transform = 'translate(' + Math.round(left) + 'px,' + Math.round(top) + 'px)';
+      tip.classList.add('show');
+    }
+    function leave() {
+      xh.setAttribute('visibility', 'hidden'); hd.setAttribute('visibility', 'hidden'); tip.classList.remove('show');
+    }
+    hit.addEventListener('pointermove', move);
+    hit.addEventListener('pointerdown', move);
+    hit.addEventListener('pointerleave', leave);
+  }
+  function actualHTML(c) {
+    var d = working();
+    if (!d.tx.length) return '';
+    var k = -1;
+    d.tx.forEach(function (x) { k = Math.max(k, monthKey(x.d)); });
+    var inM = d.tx.filter(function (x) { return monthKey(x.d) === k; });
+    var rev = sum(inM, function (x) { return x.t === 'in' ? x.a : 0; });
+    var cost = sum(inM, function (x) { return x.t === 'out' ? x.a : 0; });
+    var pct = c.revenue > 0 ? Math.round(rev / c.revenue * 100) : 0;
+    return '<div class="m-actual"><p>' + esc(t('actual', monthLong(k), money(rev), money(rev - cost), pct)) + '</p>' +
+      '<button class="link-btn" data-go="ledger">' + esc(t('cta_ledger')) + '</button></div>';
+  }
+  function updateModel() {
+    var tiles = document.getElementById('m-tiles');
+    if (state.view !== 'home' || !tiles) return;
+    var m = state.model, c = modelCalc(m);
+    var margin = c.revenue > 0 ? Math.round(c.profit / c.revenue * 100) : null;
+    function tile(label, value, sub, cls) {
+      return '<div class="kpi' + (cls ? ' ' + cls : '') + '"><span class="kpi-l">' + esc(label) + '</span><span class="kpi-v">' + esc(value) + '</span>' +
+        (sub ? '<span class="kpi-s">' + esc(sub) + '</span>' : '') + '</div>';
+    }
+    tiles.innerHTML =
+      tile(t('mt_rev'), money(Math.round(c.revenue)), t('cups_month', c.cupsMonth)) +
+      tile(t('mt_profit'), money(Math.round(c.profit)), margin === null ? '' : t('kpi_profit_s', (margin < 0 ? '−' : '') + Math.abs(margin))) +
+      tile(t('mt_fund'), money(Math.round(c.fund)), t('mt_fund_s', m.fundPct), 'fund') +
+      tile(t('mt_ws'), c.sessions === null ? '—' : t('sessions_n', c.sessions), c.sessions === null ? t('mt_ws_free') : t('mt_ws_s', money(m.wsCost))) +
+      '<p class="m-be">' + esc(c.be === null ? t('be_none') : t('be_text', c.be)) + '</p>';
+    var cup = document.getElementById('m-cup');
+    if (cup) cup.innerHTML = cupHTML(c, m, Math.max(200, cup.clientWidth - 48));
+    drawModelChart(c, m);
+    var act = document.getElementById('m-actual');
+    if (act) act.innerHTML = actualHTML(c);
+  }
+  function rerenderModel() {
+    var sec = document.getElementById('model');
+    if (!sec) return;
+    sec.outerHTML = modelHTML(working());
+    updateModel();
+  }
+  function onModelInput(el) {
+    var k = el.name;
+    if (!(k in PLAN_LIMITS)) return;
+    state.model[k] = Number(el.value);
+    var out = document.getElementById('m-' + k + '-v');
+    if (out) out.textContent = modelVal(k, state.model[k]);
+    updateModel();
+  }
+  function savePlan() {
+    if (state.edit !== 'yes' || state.demo) return;
+    var m = state.model, plan = normPlan(m), changed = false;
+    removeOps(function (op) { return op.op === 'setPlan' || op.op === 'setFund'; });
+    if (!SAVED.plan || !same(plan, SAVED.plan)) { pushOp({ op: 'setPlan', plan: plan }); changed = true; }
+    var fp = Math.max(0, Math.min(100, Math.round(m.fundPct)));
+    if (fp !== SAVED.fundPct) { pushOp({ op: 'setFund', value: fp }); changed = true; }
+    renderPending();
+    toast(changed ? t('plan_set') : t('plan_same'));
+  }
+
+  function setMenuOp(menu) {
+    var next = normMenu(menu);
+    removeOps(function (op) { return op.op === 'setMenu'; });
+    if (!same(next, menuOf(SAVED))) pushOp({ op: 'setMenu', menu: next });
+  }
+  function menuEditorHTML(d) {
+    var menu = menuOf(d), e = state.menuEdit, h = '';
+    function text(id, name, label, val, max, errKey, ph) {
+      return '<div class="field"><label class="lbl" for="' + id + '">' + esc(label) + '</label><input class="input" id="' + id + '" name="' + name + '" maxlength="' + max +
+        '" autocomplete="off" value="' + esc(val) + '"' + (ph ? ' placeholder="' + esc(ph) + '"' : '') + (errKey ? inv(errKey) : '') + '>' + (errKey ? fieldErr(errKey) : '') + '</div>';
+    }
+    if (e) {
+      h += '<form data-form="menu" novalidate><h3 class="sub-t">' + esc(e.id === 'new' ? t('me_new_h') : t('me_edit_h')) + '</h3>' +
+        text('me-vi', 'vi', t('me_vi'), e.vi, 60, 'me_vi') +
+        text('me-en', 'en', t('me_en'), e.en, 60, null, t('f_optional')) +
+        '<div class="field"><label class="lbl" for="me-cat">' + esc(t('me_cat')) + '</label><select class="input" id="me-cat" name="cat">';
+      MENU_CATS.forEach(function (c) { h += '<option value="' + c + '"' + (e.cat === c ? ' selected' : '') + '>' + esc(T[state.lang].mcats[c]) + '</option>'; });
+      h += '</select></div><div class="row2">' +
+        '<div class="field"><label class="lbl" for="me-price">' + esc(t('me_price')) + '</label><input class="input" id="me-price" name="price" inputmode="decimal" autocomplete="off" placeholder="29k" value="' + esc(e.price) + '"' + inv('me_price') + '>' + fieldErr('me_price') + '</div>' +
+        '<div class="field"><label class="lbl" for="me-cost">' + esc(t('me_cost')) + '</label><input class="input" id="me-cost" name="cost" inputmode="decimal" autocomplete="off" placeholder="9k" value="' + esc(e.cost) + '"' + inv('me_cost') + '>' + fieldErr('me_cost') + '</div>' +
+        '</div><p class="hint" style="margin:-6px 0 14px">' + esc(t('me_help')) + '</p>' +
+        text('me-dvi', 'dvi', t('me_dvi'), e.dvi, 160, null, t('f_optional')) +
+        text('me-den', 'den', t('me_den'), e.den, 160, null, t('f_optional')) +
+        '<label class="check"><input type="checkbox" id="me-sig" name="sig"' + (e.sig ? ' checked' : '') + '><span>' + esc(t('me_sig')) + '</span></label>' +
+        '<div class="btn-row"><button class="btn btn-line" type="button" data-act="menu-cancel">' + esc(t('me_cancel')) + '</button>' +
+        '<button class="btn btn-dark" type="submit">' + esc(t('me_save')) + '</button></div></form>';
+      return h;
+    }
+    h += '<button class="btn btn-line btn-block" data-act="menu-new" data-fk="menu-new">' + esc(t('me_add')) + '</button><ul class="mlist">';
+    MENU_CATS.forEach(function (cat) {
+      var items = menu.filter(function (i) { return i.cat === cat; });
+      if (!items.length) return;
+      h += '<li class="ml-cat">' + esc(T[state.lang].mcats[cat]) + '</li>';
+      items.forEach(function (it) {
+        var gm = it.price > 0 ? Math.round((it.price - it.cost) / it.price * 100) : 0;
+        h += '<li class="ml"><div class="ml-main"><span class="ml-name">' + esc(itemName(it)) + '</span><span class="ml-meta">' + esc(kPrice(it.price) + ', ' + t('me_margin', gm)) + '</span></div>' +
+          '<button class="row-btn" data-menu-edit="' + esc(it.id) + '">' + esc(t('me_edit')) + '</button>' +
+          '<button class="row-btn" data-menu-del="' + esc(it.id) + '" aria-label="' + esc(t('del_aria', itemName(it))) + '">' + esc(t('del')) + '</button></li>';
+      });
+    });
+    return h + '</ul>';
+  }
+  function submitMenu() {
+    var e = state.menuEdit;
+    if (!e) return;
+    state.errors = {};
+    var price = parseAmount(e.price), cost = String(e.cost).trim() === '' ? 0 : parseAmount(e.cost);
+    if (!String(e.vi).trim()) state.errors.me_vi = t('err_name');
+    if (!(price > 0) || price >= 1e9) state.errors.me_price = t('err_price');
+    if (!(cost >= 0) || cost >= 1e9) state.errors.me_cost = t('err_mcost');
+    if (Object.keys(state.errors).length) { render(); focusFirstError(); return; }
+    var item = normMenuItem({ id: e.id === 'new' ? 'm' + uid() : e.id, cat: e.cat, vi: e.vi, en: e.en, dvi: e.dvi, den: e.den, price: price, cost: cost, sig: !!e.sig });
+    var menu = menuOf(working()).slice(), found = false;
+    for (var i = 0; i < menu.length; i++) { if (menu[i].id === item.id) { menu[i] = item; found = true; } }
+    if (!found) menu.push(item);
+    setMenuOp(menu);
+    state.menuEdit = null;
+    render();
+    toast(t('menu_saved'));
+  }
+
+  function footerHTML() {
+    return '<footer class="footer"><div class="wrap footer-in">' +
+      '<button class="brand" data-go="top" aria-label="' + esc(t('to_top')) + '">' + logo(26) + '<span>Góc Nhỏ<small>Coffee</small></span></button>' +
+      '<div class="footer-text"><span>' + esc(t('footer_about')) + '</span></div>' +
+      '</div></footer>';
+  }
+
+  function fundInfo(d) {
+    var rev = sum(d.tx, function (x) { return x.t === 'in' ? x.a : 0; });
+    var cost = sum(d.tx, function (x) { return x.t === 'out' ? x.a : 0; });
+    var profit = rev - cost;
+    var alloc = Math.round(Math.max(0, profit) * d.fundPct / 100);
+    var spent = sum(d.ws, function (w) { return w.cost; });
+    return { profit: profit, alloc: alloc, spent: spent, left: alloc - spent };
+  }
+
+  function chartMonths(d) {
+    var p = todayParts(), cur = p.y * 12 + p.m - 1;
+    var start = cur - 5, end = cur;
+    if (state.period === 'year') start = Math.min(p.y * 12, cur - 5);
+    if (state.period === 'all') {
+      d.tx.forEach(function (x) { var k = monthKey(x.d); if (k < start) start = k; if (k > end) end = k; });
+      if (end - start > 23) start = end - 23;
+    }
+    var months = [];
+    for (var k = start; k <= end; k++) months.push({ k: k, rev: 0, cost: 0, hl: monthInPeriod(k) });
+    d.tx.forEach(function (x) {
+      var i = monthKey(x.d) - start;
+      if (i >= 0 && i < months.length) { if (x.t === 'in') months[i].rev += x.a; else months[i].cost += x.a; }
+    });
+    return months;
+  }
+
+  function breakdown(list, cats, color, title) {
+    var tot = {};
+    cats.forEach(function (c) { tot[c] = 0; });
+    list.forEach(function (x) { tot[x.c] += x.a; });
+    var rows = cats.map(function (c) { return { c: c, v: tot[c] }; }).filter(function (r) { return r.v > 0; })
+      .sort(function (a, b) { return b.v - a.v; });
+    var all = sum(rows, function (r) { return r.v; });
+    var h = '<section class="panel"><div class="panel-h"><h2 class="panel-t">' + esc(title) + '</h2></div>';
+    if (!rows.length) return h + '<p class="muted-note">' + esc(t('by_empty')) + '</p></section>';
+    h += '<ul class="bars">';
+    rows.forEach(function (r) {
+      var share = Math.round(r.v / all * 100);
+      var w = Math.max(1, r.v / rows[0].v * 100);
+      h += '<li class="bar-row"><div class="bar-top"><span>' + esc(T[state.lang].cats[r.c]) + '</span><b>' + esc(money(r.v)) + '<small>' + share + '%</small></b></div>' +
+        '<span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:' + w.toFixed(2) + '%;background:' + color + '"></span></span></li>';
+    });
+    return h + '</ul></section>';
+  }
+
+  function ledgerHTML() {
+    var d = current();
+    var real = !state.demo;
+    var sets = { addTx: {}, delTx: {}, addWs: {}, delWs: {} };
+    if (real) pending.forEach(function (op) {
+      if (op.op === 'addTx') sets.addTx[op.item.id] = 1;
+      if (op.op === 'addWs') sets.addWs[op.item.id] = 1;
+      if (op.op === 'delTx') sets.delTx[op.id] = 1;
+      if (op.op === 'delWs') sets.delWs[op.id] = 1;
+    });
+    var listData = real ? applyOps(SAVED, pending.filter(function (op) { return op.op !== 'delTx' && op.op !== 'delWs'; })) : d;
+
+    var txP = d.tx.filter(function (x) { return periodMatch(x.d); });
+    var inP = txP.filter(function (x) { return x.t === 'in'; });
+    var outP = txP.filter(function (x) { return x.t === 'out'; });
+    var rev = sum(inP, function (x) { return x.a; });
+    var cost = sum(outP, function (x) { return x.a; });
+    var profit = rev - cost;
+    var fund = fundInfo(d);
+    var canEdit = state.edit === 'yes' && real;
+    var showSide = state.edit === 'yes' || state.demo;
+    var emptyAll = !d.tx.length && !d.ws.length;
+
+    var h = '<section class="ledger"><div class="wrap">';
+    h += '<div class="ledger-head"><div><h1>' + esc(t('ledger_h')) + '</h1><p class="ledger-lede">' + esc(t('ledger_lede')) + '</p>';
+    if (real && SAVED.updatedAt && ISO.test(SAVED.updatedAt.slice(0, 10))) {
+      var up = new Date(SAVED.updatedAt);
+      var upIso = isNaN(up.getTime()) ? SAVED.updatedAt.slice(0, 10) : up.getFullYear() + '-' + pad(up.getMonth() + 1) + '-' + pad(up.getDate());
+      h += '<p class="meta-line">' + esc(t('updated', fmtDate(upIso))) + '</p>';
+    }
+    if (state.edit === 'no') h += '<p class="meta-line">' + esc(t('readonly')) + '</p>';
+    h += '</div></div>';
+
+    if (state.demo) {
+      h += '<div class="notice demo" role="status"><span>' + esc(t('demo_banner')) + '</span><button class="btn btn-dark" data-act="demo-exit">' + esc(t('demo_exit')) + '</button></div>';
+    }
+
+    if (emptyAll && !state.demo) {
+      h += '<div class="ledger-grid' + (showSide ? ' has-side' : '') + '"><div class="ledger-main"><div class="empty-state"><p>' +
+        esc(state.edit === 'yes' ? t('empty_edit') : t('empty_view')) + '</p>' +
+        (state.edit === 'yes' ? '<button class="btn btn-line" data-act="demo">' + esc(t('demo_btn')) + '</button>' : '') + '</div></div>' +
+        (showSide ? '<aside class="ledger-side">' + editorHTML(d, fund) + '</aside>' : '') + '</div></div></section>';
+      return h;
+    }
+
+    h += '<div class="filters" role="group" aria-label="' + esc(t('period')) + '">';
+    ['month', 'last', 'year', 'all'].forEach(function (p) {
+      h += '<button class="chip" data-period="' + p + '" data-fk="period-' + p + '" aria-pressed="' + (state.period === p) + '">' + esc(t('p_' + p)) + '</button>';
+    });
+    h += '</div>';
+
+    var margin = rev > 0 ? Math.round(profit / rev * 100) : null;
+    var planRev = d.plan ? d.plan.cups * d.plan.price * d.plan.days : 0;
+    state.planRev = planRev;
+    var planPct = planRev > 0 && (state.period === 'month' || state.period === 'last') ? Math.round(rev / planRev * 100) : null;
+    h += '<div class="kpis">' +
+      '<div class="kpi"><span class="kpi-l">' + esc(t('kpi_rev')) + '</span><span class="kpi-v">' + esc(money(rev)) + '</span><span class="kpi-s">' + esc(planPct !== null ? t('kpi_rev_plan', planPct, cmoney(planRev)) : t('kpi_rev_s', inP.length)) + '</span></div>' +
+      '<div class="kpi"><span class="kpi-l">' + esc(t('kpi_cost')) + '</span><span class="kpi-v">' + esc(money(cost)) + '</span><span class="kpi-s">' + esc(t('kpi_cost_s', outP.length)) + '</span></div>' +
+      '<div class="kpi"><span class="kpi-l">' + esc(t('kpi_profit')) + '</span><span class="kpi-v">' + esc(money(profit)) + '</span><span class="kpi-s">' + esc(margin === null ? t('kpi_profit_none') : t('kpi_profit_s', (margin < 0 ? '−' : '') + Math.abs(margin))) + '</span></div>' +
+      '<div class="kpi fund"><span class="kpi-l">' + esc(t('kpi_fund')) + '</span><span class="kpi-v">' + esc(money(fund.left)) + '</span><span class="kpi-s">' + esc(t('kpi_fund_s', d.fundPct, money(fund.spent))) + '</span></div>' +
+      '</div>';
+
+    h += '<div class="ledger-grid' + (showSide ? ' has-side' : '') + '"><div class="ledger-main">';
+
+    /* chart */
+    var months = chartMonths(d);
+    state.months = months;
+    var anyMonth = months.some(function (m) { return m.rev || m.cost; });
+    h += '<section class="panel"><div class="panel-h"><h2 class="panel-t">' + esc(t('chart_h')) + '</h2><div class="panel-tools">' +
+      '<div class="legend"><span><i class="sw" style="background:var(--rev)"></i>' + esc(t('kpi_rev')) + '</span><span><i class="sw" style="background:var(--cost)"></i>' + esc(t('kpi_cost')) + '</span>' +
+      (planRev > 0 ? '<span><i class="lk"></i>' + esc(t('legend_plan')) + '</span>' : '') + '</div>' +
+      (anyMonth ? '<button class="link-btn" data-act="chart-table" data-fk="chart-table">' + esc(state.chartTable ? t('show_chart') : t('show_table')) + '</button>' : '') +
+      '</div></div>';
+    if (!anyMonth) {
+      h += '<div class="chart-empty">' + esc(t('chart_empty')) + '</div>';
+    } else if (state.chartTable) {
+      h += '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + esc(t('th_month')) + '</th><th class="num">' + esc(t('kpi_rev')) + '</th><th class="num">' + esc(t('kpi_cost')) + '</th><th class="num">' + esc(t('th_profit')) + '</th></tr></thead><tbody>';
+      months.forEach(function (m) {
+        h += '<tr><td>' + esc(monthLong(m.k)) + '</td><td class="num">' + esc(money(m.rev)) + '</td><td class="num">' + esc(money(m.cost)) + '</td><td class="num">' + esc(money(m.rev - m.cost)) + '</td></tr>';
+      });
+      h += '</tbody></table></div>';
+    } else {
+      h += '<div class="chart" id="gn-chart"></div>';
+    }
+    h += '</section>';
+
+    h += '<div class="split">' + breakdown(inP, IN_CATS, 'var(--rev)', t('by_rev')) + breakdown(outP, OUT_CATS, 'var(--cost)', t('by_cost')) + '</div>';
+
+    /* entries */
+    var rows = listData.tx.filter(function (x) { return periodMatch(x.d); }).sort(byDateDesc);
+    h += '<section class="panel"><div class="panel-h"><h2 class="panel-t">' + esc(t('entries_h')) + '</h2>' +
+      (d.tx.length ? '<button class="link-btn" data-act="csv">' + esc(t('copy_csv')) + '</button>' : '') + '</div>';
+    if (!rows.length) {
+      h += '<p class="muted-note">' + esc(t('entries_empty')) + '</p>';
+    } else {
+      h += '<ul class="entries"><li class="entry head" aria-hidden="true"><span>' + esc(t('th_date')) + '</span><span>' + esc(t('th_entry')) + '</span><span>' + esc(t('th_amount')) + '</span><span></span></li>';
+      rows.slice(0, state.txLimit).forEach(function (x) {
+        var isDel = !!sets.delTx[x.id], isNew = !!sets.addTx[x.id];
+        var cat = T[state.lang].cats[x.c];
+        h += '<li class="entry' + (isDel ? ' is-del' : '') + '"><span class="e-date">' + esc(fmtDate(x.d)) + '</span>' +
+          '<span class="e-main"><i class="dot" style="background:' + (x.t === 'in' ? 'var(--rev)' : 'var(--cost)') + '"></i><span class="e-cat">' + esc(cat) + '</span>' +
+          (x.n ? '<span class="e-note">' + esc(x.n) + '</span>' : '') + (isNew ? '<span class="tag">' + esc(t('unsaved')) + '</span>' : '') + '</span>' +
+          '<span class="e-amt">' + esc(signed(x.a, x.t)) + '</span><span class="e-act">';
+        if (canEdit) {
+          h += isDel ? '<button class="row-btn" data-undo-tx="' + esc(x.id) + '">' + esc(t('undo')) + '</button>'
+            : '<button class="row-btn" data-del-tx="' + esc(x.id) + '" aria-label="' + esc(t('del_aria', cat + ' ' + fmtDate(x.d))) + '">' + esc(t('del')) + '</button>';
+        }
+        h += '</span></li>';
+      });
+      h += '</ul>';
+      if (rows.length > state.txLimit) {
+        h += '<button class="btn btn-line more" data-act="more" data-fk="more">' + esc(t('more', Math.min(20, rows.length - state.txLimit))) + '</button>';
+      }
+    }
+    h += '</section>';
+
+    /* workshop log */
+    var wrows = listData.ws.filter(function (w) { return periodMatch(w.d); }).sort(byDateDesc);
+    h += '<section class="panel"><div class="panel-h"><h2 class="panel-t">' + esc(t('wslog_h')) + '</h2></div>';
+    if (!wrows.length) {
+      h += '<p class="muted-note">' + esc(t('wslog_empty')) + '</p>';
+    } else {
+      h += '<ul class="entries"><li class="entry ws-row head" aria-hidden="true"><span>' + esc(t('th_date')) + '</span><span>' + esc(t('th_ws')) + '</span><span style="text-align:right">' + esc(t('th_kids')) + '</span><span style="text-align:right">' + esc(t('th_cost')) + '</span><span></span></li>';
+      wrows.forEach(function (w) {
+        var isDel = !!sets.delWs[w.id], isNew = !!sets.addWs[w.id];
+        h += '<li class="entry ws-row' + (isDel ? ' is-del' : '') + '"><span class="e-date">' + esc(fmtDate(w.d)) + '</span>' +
+          '<span class="e-main"><span class="e-cat">' + esc(w.title) + '</span><span class="e-note">' + esc(T[state.lang].tracks[w.track]) + '</span>' +
+          (w.n ? '<span class="e-note">' + esc(w.n) + '</span>' : '') + (isNew ? '<span class="tag">' + esc(t('unsaved')) + '</span>' : '') + '</span>' +
+          '<span class="e-kids" data-unit="' + esc(t('kids_unit', w.kids)) + '">' + w.kids + '</span><span class="e-amt">' + esc(money(w.cost)) + '</span><span class="e-act">';
+        if (canEdit) {
+          h += isDel ? '<button class="row-btn" data-undo-ws="' + esc(w.id) + '">' + esc(t('undo')) + '</button>'
+            : '<button class="row-btn" data-del-ws="' + esc(w.id) + '" aria-label="' + esc(t('del_aria', w.title)) + '">' + esc(t('del')) + '</button>';
+        }
+        h += '</span></li>';
+      });
+      h += '</ul>';
+    }
+    h += '</section>';
+
+    h += '</div>';
+    if (showSide) h += '<aside class="ledger-side">' + editorHTML(d, fund) + '</aside>';
+    h += '</div></div></section>';
+    return h;
+  }
+
+  function fieldErr(key) {
+    var e = state.errors[key];
+    return e ? '<span class="err" id="err-' + key + '">' + esc(e) + '</span>' : '';
+  }
+  function inv(key) { return state.errors[key] ? ' aria-invalid="true" aria-describedby="err-' + key + '"' : ''; }
+
+  function amountHint(raw) {
+    var v = parseAmount(raw);
+    if (raw && v > 0) return '<span class="hint ok" id="hint-a">= ' + esc(money(v)) + '</span>';
+    return '<span class="hint" id="hint-a">' + esc(t('f_amount_hint')) + '</span>';
+  }
+
+  function editorHTML(d, fund) {
+    if (state.demo) {
+      return '<section class="panel editor"><h2 class="panel-t">' + esc(t('editor_h')) + '</h2><p class="side-note" style="margin-bottom:14px">' + esc(t('demo_locked')) + '</p>' +
+        '<button class="btn btn-dark btn-block" data-act="demo-exit">' + esc(t('demo_exit')) + '</button></section>';
+    }
+    var f = state.form;
+    var h = '<section class="panel editor"><h2 class="panel-t">' + esc(t('editor_h')) + '</h2>';
+    h += '<div class="tabs" role="tablist">';
+    [['tx', 'tab_tx'], ['ws', 'tab_ws'], ['menu', 'tab_menu'], ['fund', 'tab_fund']].forEach(function (tb) {
+      h += '<button class="tab" role="tab" id="tab-' + tb[0] + '" data-tab="' + tb[0] + '" data-fk="tab-' + tb[0] + '" aria-selected="' + (state.tab === tb[0]) + '" aria-controls="tabpanel">' + esc(t(tb[1])) + '</button>';
+    });
+    h += '</div><div id="tabpanel" role="tabpanel" aria-labelledby="tab-' + state.tab + '">';
+
+    if (state.tab === 'tx') {
+      var cats = f.tx.t === 'in' ? IN_CATS : OUT_CATS;
+      h += '<form data-form="tx" novalidate>' +
+        '<fieldset class="field"><legend class="lbl">' + esc(t('f_type')) + '</legend><div class="seg">' +
+          '<label><input type="radio" name="t" value="in"' + (f.tx.t === 'in' ? ' checked' : '') + '><span><i class="dot" style="background:var(--rev)"></i>' + esc(t('f_in')) + '</span></label>' +
+          '<label><input type="radio" name="t" value="out"' + (f.tx.t === 'out' ? ' checked' : '') + '><span><i class="dot" style="background:var(--cost)"></i>' + esc(t('f_out')) + '</span></label>' +
+        '</div></fieldset>' +
+        '<div class="row2 date-row"><div class="field"><label class="lbl" for="tx-d">' + esc(t('f_date')) + '</label><input class="input" id="tx-d" name="d" type="date" value="' + esc(f.tx.d) + '"' + inv('tx_d') + '>' + fieldErr('tx_d') + '</div>' +
+        '<div class="field"><label class="lbl" for="tx-c">' + esc(t('f_cat')) + '</label><select class="input" id="tx-c" name="c">';
+      cats.forEach(function (c) { h += '<option value="' + c + '"' + (f.tx.c === c ? ' selected' : '') + '>' + esc(T[state.lang].cats[c]) + '</option>'; });
+      h += '</select></div></div>' +
+        '<div class="field"><label class="lbl" for="tx-a">' + esc(t('f_amount')) + '</label><input class="input" id="tx-a" name="a" inputmode="decimal" autocomplete="off" placeholder="45000" value="' + esc(f.tx.a) + '"' + inv('tx_a') + '>' +
+          (state.errors.tx_a ? fieldErr('tx_a') : amountHint(f.tx.a)) + '</div>' +
+        '<div class="field"><label class="lbl" for="tx-n">' + esc(t('f_note')) + '</label><input class="input" id="tx-n" name="n" maxlength="140" autocomplete="off" placeholder="' + esc(t('f_optional')) + '" value="' + esc(f.tx.n) + '"></div>' +
+        '<button class="btn btn-dark btn-block" type="submit">' + esc(t('f_add_tx')) + '</button></form>';
+    } else if (state.tab === 'ws') {
+      h += '<form data-form="ws" novalidate>' +
+        '<div class="row2 date-row"><div class="field"><label class="lbl" for="ws-d">' + esc(t('f_date')) + '</label><input class="input" id="ws-d" name="d" type="date" value="' + esc(f.ws.d) + '"' + inv('ws_d') + '>' + fieldErr('ws_d') + '</div>' +
+        '<div class="field"><label class="lbl" for="ws-track">' + esc(t('f_track')) + '</label><select class="input" id="ws-track" name="track">';
+      TRACKS.forEach(function (tr) { h += '<option value="' + tr + '"' + (f.ws.track === tr ? ' selected' : '') + '>' + esc(T[state.lang].tracks[tr]) + '</option>'; });
+      h += '</select></div></div>' +
+        '<div class="field"><label class="lbl" for="ws-title">' + esc(t('f_title')) + '</label><input class="input" id="ws-title" name="title" maxlength="100" autocomplete="off" placeholder="' + esc(t('f_title_ph')) + '" value="' + esc(f.ws.title) + '"' + inv('ws_title') + '>' + fieldErr('ws_title') + '</div>' +
+        '<div class="row2"><div class="field"><label class="lbl" for="ws-kids">' + esc(t('f_kids')) + '</label><input class="input" id="ws-kids" name="kids" inputmode="numeric" autocomplete="off" placeholder="12" value="' + esc(f.ws.kids) + '"' + inv('ws_kids') + '>' + fieldErr('ws_kids') + '</div>' +
+        '<div class="field"><label class="lbl" for="ws-cost">' + esc(t('f_ws_cost')) + '</label><input class="input" id="ws-cost" name="cost" inputmode="decimal" autocomplete="off" placeholder="300k" value="' + esc(f.ws.cost) + '"' + inv('ws_cost') + '>' + fieldErr('ws_cost') + '</div></div>' +
+        '<div class="field"><label class="lbl" for="ws-n">' + esc(t('f_note')) + '</label><input class="input" id="ws-n" name="n" maxlength="140" autocomplete="off" placeholder="' + esc(t('f_optional')) + '" value="' + esc(f.ws.n) + '"></div>' +
+        '<button class="btn btn-dark btn-block" type="submit">' + esc(t('f_add_ws')) + '</button></form>';
+    } else if (state.tab === 'menu') {
+      h += menuEditorHTML(d);
+    } else {
+      var pctVal = f.pct === '' ? String(d.fundPct) : f.pct;
+      h += '<div class="fund-sum">' +
+        '<div><span>' + esc(t('fs_profit')) + '</span><b>' + esc(money(fund.profit)) + '</b></div>' +
+        '<div><span>' + esc(t('fs_alloc')) + '</span><b>' + esc(money(fund.alloc)) + '</b></div>' +
+        '<div><span>' + esc(t('fs_spent')) + '</span><b>' + esc(money(fund.spent)) + '</b></div>' +
+        '<div><span>' + esc(t('fs_left')) + '</span><b>' + esc(money(fund.left)) + '</b></div></div>' +
+        '<form data-form="fund" novalidate><div class="field"><label class="lbl" for="f-pct">' + esc(t('f_pct')) + '</label>' +
+        '<input class="input" id="f-pct" name="pct" inputmode="numeric" autocomplete="off" value="' + esc(pctVal) + '"' + inv('pct') + '>' +
+        (state.errors.pct ? fieldErr('pct') : '<span class="hint">' + esc(t('f_pct_help')) + '</span>') + '</div>' +
+        '<button class="btn btn-dark btn-block" type="submit">' + esc(t('f_set_pct')) + '</button></form>';
+    }
+    h += '</div></section>';
+    return h;
+  }
+
+  function pendingHTML() {
+    if (state.demo || !pending.length || (state.view !== 'ledger' && state.edit !== 'yes')) return '';
+    var can = state.edit === 'yes';
+    return '<div class="pending" role="region" aria-label="' + esc(t('pending_n', pending.length)) + '"><p aria-live="polite">' + esc(t('pending_n', pending.length)) + '</p>' +
+      '<button class="btn btn-line-light" data-act="discard"' + (state.saving ? ' disabled' : '') + '>' + esc(t('discard')) + '</button>' +
+      (can ? '<button class="btn btn-crema" data-act="save"' + (state.saving ? ' disabled' : '') + '>' + esc(state.saving ? t('saving') : t('save')) + '</button>' : '') +
+      '</div>';
+  }
+
+  /* ----------------------------------------------------------------- chart */
+  function niceTicks(max) {
+    if (!(max > 0)) return [0];
+    var raw = max / 4;
+    var p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
+    var steps = [1, 2, 2.5, 5, 10], step = p * 10;
+    for (var i = 0; i < steps.length; i++) { if (steps[i] * p >= raw) { step = steps[i] * p; break; } }
+    var top = Math.ceil(max / step) * step, out = [];
+    for (var v = 0; v <= top + step / 1000; v += step) out.push(Math.round(v));
+    return out;
+  }
+  function barPath(x, yTop, w, base) {
+    var h = base - yTop;
+    if (h <= 0) return '';
+    var r = Math.min(4, h, w / 2);
+    return 'M' + x + ' ' + base + 'V' + (yTop + r) + 'Q' + x + ' ' + yTop + ' ' + (x + r) + ' ' + yTop + 'H' + (x + w - r) +
+      'Q' + (x + w) + ' ' + yTop + ' ' + (x + w) + ' ' + (yTop + r) + 'V' + base + 'Z';
+  }
+  var chartW = -1;
+  function drawChart() {
+    var host = document.getElementById('gn-chart');
+    if (!host || !state.months) return;
+    var months = state.months;
+    chartW = Math.floor(host.clientWidth);
+    var W = Math.max(260, chartW);
+    var narrow = W < 520;
+    var H = narrow ? 250 : 290, padL = 46, padR = 8, padT = 22, padB = 44;
+    var plotW = W - padL - padR, plotH = H - padT - padB, base = padT + plotH;
+    var max = 0;
+    months.forEach(function (m) { max = Math.max(max, m.rev, m.cost); });
+    if (state.planRev > 0) max = Math.max(max, state.planRev);
+    var ticks = niceTicks(max), top = ticks[ticks.length - 1] || 1;
+    var n = months.length, band = plotW / n;
+    var barW = Math.max(3, Math.min(24, (band * 0.66 - 2) / 2));
+    function y(v) { return base - v / top * plotH; }
+    var every = Math.max(1, Math.ceil(n / Math.max(1, Math.floor(plotW / 46))));
+    var s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc(t('chart_aria')) + '">';
+    ticks.forEach(function (tv) {
+      var yy = Math.round(y(tv)) + 0.5;
+      s += '<line class="' + (tv === 0 ? 'axis' : 'grid') + '" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + yy + '" y2="' + yy + '"/>' +
+        '<text class="tick" x="' + (padL - 8) + '" y="' + (yy + 4) + '" text-anchor="end">' + esc(compact(tv)) + '</text>';
+    });
+    var lastRev = -1, yearShown = false;
+    months.forEach(function (m, i) { if (m.rev > 0) lastRev = i; });
+    months.forEach(function (m, i) {
+      var x0 = padL + band * i, cx = x0 + band / 2;
+      var label = monthLong(m.k) + ': ' + t('kpi_rev') + ' ' + money(m.rev) + ', ' + t('kpi_cost') + ' ' + money(m.cost);
+      s += '<g class="band' + (m.hl ? '' : ' dim') + '" data-i="' + i + '" tabindex="0" role="img" aria-label="' + esc(label) + '">' +
+        '<rect class="hit" x="' + x0.toFixed(1) + '" y="' + padT + '" width="' + band.toFixed(1) + '" height="' + plotH + '" rx="6"/>' +
+        '<path class="bar" fill="var(--rev)" d="' + barPath(+(cx - barW - 1).toFixed(1), Math.min(base - (m.rev > 0 ? 2 : 0), y(m.rev)), +barW.toFixed(1), base) + '"/>' +
+        '<path class="bar" fill="var(--cost)" d="' + barPath(+(cx + 1).toFixed(1), Math.min(base - (m.cost > 0 ? 2 : 0), y(m.cost)), +barW.toFixed(1), base) + '"/>' +
+        '</g>';
+      if ((n - 1 - i) % every === 0) {
+        s += '<text class="xl" x="' + cx.toFixed(1) + '" y="' + (base + 18) + '" text-anchor="middle">' + esc(monthShort(m.k)) + '</text>';
+        if (!yearShown || m.k % 12 === 0) {
+          yearShown = true;
+          s += '<text class="xl yr" x="' + cx.toFixed(1) + '" y="' + (base + 33) + '" text-anchor="middle">' + Math.floor(m.k / 12) + '</text>';
+        }
+      }
+    });
+    if (state.planRev > 0) {
+      var py = Math.round(y(state.planRev)) + 0.5;
+      s += '<line class="plan" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py + '" y2="' + py + '"/>' +
+        '<text class="pl" x="' + (padL + 6) + '" y="' + (py - 7) + '">' + esc(t('legend_plan') + ' ' + compact(state.planRev)) + '</text>';
+    }
+    if (lastRev >= 0) {
+      var lm = months[lastRev], lx = padL + band * lastRev + band / 2 - barW / 2 - 1;
+      var ly = Math.min(base - 2, y(lm.rev)) - 7;
+      var anchor = lastRev === n - 1 ? 'end' : 'middle';
+      var lxx = anchor === 'end' ? Math.min(W - padR, lx + barW / 2 + 2) : lx;
+      s += '<text class="dl" x="' + lxx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + anchor + '">' + esc(compact(lm.rev)) + '</text>';
+    }
+    s += '</svg><div class="tip" id="gn-tip" aria-hidden="true"></div>';
+    host.innerHTML = s;
+    host.style.height = H + 'px';
+
+    var tip = host.querySelector('#gn-tip');
+    function show(g, px) {
+      var m = months[+g.getAttribute('data-i')];
+      Array.prototype.forEach.call(host.querySelectorAll('.band.on'), function (b) { b.classList.remove('on'); });
+      g.classList.add('on');
+      tip.textContent = '';
+      var hd = document.createElement('div'); hd.className = 'tip-h'; hd.textContent = monthLong(m.k); tip.appendChild(hd);
+      [[m.rev, t('kpi_rev'), 'var(--rev)'], [m.cost, t('kpi_cost'), 'var(--cost)']].forEach(function (r) {
+        var row = document.createElement('div'); row.className = 'tip-row';
+        var k = document.createElement('span'); k.className = 'tip-key'; k.style.background = r[2];
+        var b = document.createElement('b'); b.textContent = money(r[0]);
+        var i = document.createElement('i'); i.textContent = r[1];
+        row.appendChild(k); row.appendChild(b); row.appendChild(i); tip.appendChild(row);
+      });
+      var sep = document.createElement('div'); sep.className = 'tip-sep'; tip.appendChild(sep);
+      var pr = document.createElement('div'); pr.className = 'tip-row';
+      var pk = document.createElement('span'); pk.className = 'tip-key';
+      var pb = document.createElement('b'); pb.textContent = money(m.rev - m.cost);
+      var pi = document.createElement('i'); pi.textContent = t('tip_profit');
+      pr.appendChild(pk); pr.appendChild(pb); pr.appendChild(pi); tip.appendChild(pr);
+      var i2 = +g.getAttribute('data-i');
+      var cx = px != null ? px : padL + band * i2 + band / 2;
+      var tw = tip.offsetWidth, th = tip.offsetHeight;
+      var left = Math.max(0, Math.min(W - tw, cx - tw / 2));
+      var topY = Math.min(y(m.rev), y(m.cost)) - th - 12;
+      if (topY < -th / 2) topY = 4;
+      tip.style.transform = 'translate(' + Math.round(left) + 'px,' + Math.round(topY) + 'px)';
+      tip.classList.add('show');
+    }
+    function hide() {
+      tip.classList.remove('show');
+      Array.prototype.forEach.call(host.querySelectorAll('.band.on'), function (b) { b.classList.remove('on'); });
+    }
+    Array.prototype.forEach.call(host.querySelectorAll('.band'), function (g) {
+      g.addEventListener('pointerenter', function () { show(g); });
+      g.addEventListener('pointerdown', function () { show(g); });
+      g.addEventListener('focus', function () { show(g); });
+      g.addEventListener('blur', hide);
+    });
+    host.addEventListener('pointerleave', hide);
+  }
+
+  /* ------------------------------------------------------------- rendering */
+  var root = document.getElementById('root');
+  var toastEl = document.createElement('div');
+  toastEl.className = 'toast';
+  toastEl.setAttribute('role', 'status');
+  toastEl.setAttribute('aria-live', 'polite');
+  document.body.appendChild(toastEl);
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 3600);
+  }
+
+  function render() {
+    var active = document.activeElement;
+    var fk = active && active.getAttribute ? active.getAttribute('data-fk') : null;
+    document.documentElement.lang = state.lang;
+    root.innerHTML = navHTML() + '<main id="main">' + (state.view === 'ledger' ? ledgerHTML() : homeHTML()) + '</main>' + footerHTML() + pendingHTML();
+    if (state.view === 'ledger' && !state.chartTable) drawChart();
+    if (state.view === 'home') updateModel();
+    syncNav();
+    if (fk) { var el = root.querySelector('[data-fk="' + fk + '"]'); if (el) el.focus({ preventScroll: true }); }
+  }
+  function renderPending() {
+    var old = root.querySelector('.pending');
+    var html = pendingHTML();
+    if (old) old.outerHTML = html || '';
+    else if (html) root.insertAdjacentHTML('beforeend', html);
+  }
+  function syncNav() {
+    var nav = document.getElementById('nav');
+    if (!nav) return;
+    var hero = document.getElementById('top');
+    var dark = state.view === 'home' && hero && window.scrollY < hero.offsetHeight - 72 && !nav.classList.contains('menu-open');
+    nav.classList.toggle('on-dark', !!dark);
+  }
+  var navTick = false;
+  window.addEventListener('scroll', function () {
+    if (navTick) return;
+    navTick = true;
+    requestAnimationFrame(function () { navTick = false; syncNav(); });
+  }, { passive: true });
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      var host = document.getElementById('gn-chart');
+      if (state.view === 'ledger' && !state.chartTable && host && Math.floor(host.clientWidth) !== chartW) drawChart();
+      var mh = document.getElementById('m-chart');
+      if (state.view === 'home' && mh && Math.floor(mh.clientWidth) !== modelW) updateModel();
+    }, 120);
+  });
+  window.addEventListener('hashchange', function () {
+    var v = viewFromHash();
+    if (v !== state.view) { state.view = v; render(); window.scrollTo(0, 0); }
+  });
+
+  function reduceMotion() {
+    try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; }
+  }
+  function closeMenu() {
+    var links = document.getElementById('nav-links'), btn = root.querySelector('.menu-btn'), nav = document.getElementById('nav');
+    if (links) links.classList.remove('open');
+    if (nav) nav.classList.remove('menu-open');
+    if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.textContent = t('menu'); }
+    syncNav();
+  }
+  function go(target) {
+    closeMenu();
+    if (target === 'ledger') {
+      if (state.view !== 'ledger') { state.view = 'ledger'; render(); }
+      if (location.hash !== '#ledger') location.hash = 'ledger';
+      window.scrollTo(0, 0);
+      return;
+    }
+    if (state.view !== 'home') {
+      state.view = 'home';
+      render();
+      if (location.hash) { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; } }
+    }
+    if (target === 'top') { window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' }); return; }
+    var el = document.getElementById(target);
+    if (el) el.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  /* --------------------------------------------------------------- actions */
+  function pushOp(op) { pending.push(op); savePending(); }
+  function removeOps(pred) { pending = pending.filter(function (op) { return !pred(op); }); savePending(); }
+
+  function deleteItem(kind, id) {
+    var addName = kind === 'tx' ? 'addTx' : 'addWs', delName = kind === 'tx' ? 'delTx' : 'delWs';
+    var isNew = pending.some(function (op) { return op.op === addName && op.item.id === id; });
+    if (isNew) removeOps(function (op) { return op.op === addName && op.item.id === id; });
+    else if (!pending.some(function (op) { return op.op === delName && op.id === id; })) pushOp({ op: delName, id: id });
+    render();
+  }
+  function undoDelete(kind, id) {
+    var delName = kind === 'tx' ? 'delTx' : 'delWs';
+    removeOps(function (op) { return op.op === delName && op.id === id; });
+    render();
+  }
+
+  function submitTx(form) {
+    var f = state.form.tx;
+    state.errors = {};
+    var a = parseAmount(f.a);
+    if (!ISO.test(f.d)) state.errors.tx_d = t('err_date');
+    if (!(a > 0) || a >= 1e13) state.errors.tx_a = t('err_amount');
+    if (Object.keys(state.errors).length) { render(); focusFirstError(); return; }
+    var cats = f.t === 'in' ? IN_CATS : OUT_CATS;
+    var item = { id: uid(), d: f.d, t: f.t, c: cats.indexOf(f.c) >= 0 ? f.c : cats[0], a: a, n: f.n.trim().slice(0, 140) };
+    pushOp({ op: 'addTx', item: item });
+    f.a = ''; f.n = '';
+    if (!periodMatch(item.d)) state.period = 'all';
+    render();
+    var amt = document.getElementById('tx-a');
+    if (amt) amt.focus({ preventScroll: true });
+    toast(t('added_tx'));
+  }
+  function submitWs() {
+    var f = state.form.ws;
+    state.errors = {};
+    var kids = f.kids === '' ? 0 : Number(String(f.kids).replace(/[^\d.-]/g, ''));
+    var cost = String(f.cost).trim() === '' ? 0 : parseAmount(f.cost);
+    if (!ISO.test(f.d)) state.errors.ws_d = t('err_date');
+    if (!f.title.trim()) state.errors.ws_title = t('err_title');
+    if (!(kids >= 0) || Math.round(kids) !== kids || kids > 100000) state.errors.ws_kids = t('err_kids');
+    if (!(cost >= 0) || cost >= 1e12) state.errors.ws_cost = t('err_cost');
+    if (Object.keys(state.errors).length) { render(); focusFirstError(); return; }
+    var item = { id: uid(), d: f.d, title: f.title.trim().slice(0, 100), track: TRACKS.indexOf(f.track) >= 0 ? f.track : 'art', kids: kids, cost: cost, n: f.n.trim().slice(0, 140) };
+    pushOp({ op: 'addWs', item: item });
+    f.title = ''; f.kids = ''; f.cost = ''; f.n = '';
+    if (!periodMatch(item.d)) state.period = 'all';
+    render();
+    toast(t('added_ws'));
+  }
+  function submitFund() {
+    state.errors = {};
+    var raw = String(state.form.pct === '' ? current().fundPct : state.form.pct).trim().replace(',', '.');
+    var v = Number(raw);
+    if (raw === '' || !isFinite(v) || v < 0 || v > 100) { state.errors.pct = t('err_pct'); render(); focusFirstError(); return; }
+    v = Math.round(v);
+    var now = current().fundPct;
+    removeOps(function (op) { return op.op === 'setFund'; });
+    if (v !== SAVED.fundPct) pushOp({ op: 'setFund', value: v });
+    state.form.pct = '';
+    state.model.fundPct = v;
+    render();
+    toast(v === now ? t('pct_same') : t('pct_set'));
+  }
+  function focusFirstError() {
+    var el = root.querySelector('[aria-invalid="true"]');
+    if (el) el.focus();
+  }
+
+  function save() {
+    if (state.saving || state.demo || !artifactCap || !pending.length) return;
+    var next = applyOps(SAVED, pending);
+    next.updatedAt = new Date().toISOString();
+    var html = buildDocument(next);
+    state.saving = true;
+    renderPending();
+    sSet(SS, 'gn-after-save', String(pending.length));
+    sSet(SS, 'gn-view', state.view);
+    sSet(SS, 'gn-scroll', String(Math.round(window.scrollY || 0)));
+    Promise.resolve().then(function () { return artifactCap.publish(html); }).then(function () {
+      /* the platform reloads every open view to the new version; the flag lets
+         the reloaded page confirm the save, and expires if no reload comes */
+      setTimeout(function () { sDel(SS, 'gn-after-save'); }, 6000);
+      SAVED = normalize(next);
+      pending = pending.filter(function (op) { return !opApplied(op, SAVED); });
+      savePending();
+      state.saving = false;
+      render();
+      toast(t('saved'));
+    }, function (err) {
+      sDel(SS, 'gn-after-save');
+      state.saving = false;
+      var code = err && err.code;
+      if (code === 'conflict') toast(t('save_conflict'));
+      else if (code === 'not_granted' || code === 'not_writer') { state.edit = 'no'; toast(t('save_denied')); }
+      else toast(t('save_error'));
+      render();
+    });
+  }
+
+  function csv() {
+    var d = current();
+    var L = T[state.lang];
+    var head = state.lang === 'vi' ? ['Ngày', 'Loại', 'Nhóm', 'Số tiền', 'Ghi chú'] : ['Date', 'Type', 'Category', 'Amount', 'Note'];
+    function q(v) { v = String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    var lines = [head.join(',')];
+    d.tx.slice().sort(byDateDesc).forEach(function (x) {
+      lines.push([x.d, x.t === 'in' ? L.f_in : L.f_out, L.cats[x.c], x.t === 'in' ? x.a : -x.a, x.n].map(q).join(','));
+    });
+    return lines.join('\n');
+  }
+
+  /* demo data: generated in memory only, clearly labelled, never published */
+  function makeDemo() {
+    var seed = 20261117;
+    function rnd() { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var r = Math.imul(seed ^ seed >>> 15, 1 | seed); r = r + Math.imul(r ^ r >>> 7, 61 | r) ^ r; return ((r ^ r >>> 14) >>> 0) / 4294967296; }
+    var p = todayParts(), cur = p.y * 12 + p.m - 1, tx = [], ws = [], id = 0;
+    function iso(k, day) { return Math.floor(k / 12) + '-' + pad(k % 12 + 1) + '-' + pad(day); }
+    function add(type, c, a, k, day) { tx.push({ id: 'demo' + (id++), d: iso(k, day), t: type, c: c, a: Math.round(a / 1000) * 1000, n: '' }); }
+    var titles = [['Vẽ tranh cao nguyên', 'art'], ['Hành trình hạt cà phê', 'coffee'], ['Tô màu chiếc ly của em', 'art'], ['Ngửi và đoán hương cà phê', 'coffee']];
+    for (var back = 5; back >= 0; back--) {
+      var k = cur - back, last = back === 0 ? p.d : new Date(Math.floor(k / 12), k % 12 + 1, 0).getDate(), g = (5 - back) * 0.32e6;
+      [7, 14, 21, 28].forEach(function (day, w) {
+        if (day > last) return;
+        add('in', 'drinks', 5.4e6 + rnd() * 2.2e6 + g, k, day);
+        if (w % 2 === 0) add('in', 'food', 0.9e6 + rnd() * 0.7e6, k, day);
+      });
+      if (20 <= last) add('in', 'beans', 1.1e6 + rnd() * 0.9e6, k, 20);
+      add('out', 'rent', 6e6, k, 1);
+      if (5 <= last) add('out', 'utilities', 1.05e6 + rnd() * 0.45e6, k, 5);
+      [3, 17].forEach(function (day) { if (day <= last) add('out', 'ingredients', 2.1e6 + rnd() * 1.1e6, k, day); });
+      if (28 <= last) add('out', 'staff', 4e6, k, 28);
+      if (back === 5) add('out', 'equipment', 3.6e6, k, 2);
+      if (back % 3 === 2 && 10 <= last) add('out', 'marketing', 0.8e6, k, 10);
+      if (back <= 3 && 15 <= last) {
+        var tt = titles[3 - back];
+        ws.push({ id: 'demows' + back, d: iso(k, 15), title: tt[0], track: tt[1], kids: 10 + Math.round(rnd() * 8), cost: Math.round((0.4e6 + rnd() * 0.5e6) / 1000) * 1000, n: '' });
+      }
+    }
+    return normalize({ v: 1, fundPct: 30, tx: tx, ws: ws, updatedAt: null });
+  }
+
+  /* ---------------------------------------------------------------- events */
+  root.addEventListener('click', function (e) {
+    var el = e.target.closest('button');
+    if (!el || !root.contains(el)) return;
+    var a;
+    if ((a = el.getAttribute('data-go'))) { go(a); return; }
+    if ((a = el.getAttribute('data-lang'))) {
+      if (a !== state.lang) { state.lang = a; sSet(LS, 'gn-lang', a); state.errors = {}; render(); }
+      return;
+    }
+    if ((a = el.getAttribute('data-period'))) { state.period = a; state.txLimit = 20; render(); return; }
+    if ((a = el.getAttribute('data-tab'))) { state.tab = a; state.errors = {}; render(); return; }
+    if ((a = el.getAttribute('data-del-tx'))) { deleteItem('tx', a); return; }
+    if ((a = el.getAttribute('data-undo-tx'))) { undoDelete('tx', a); return; }
+    if ((a = el.getAttribute('data-del-ws'))) { deleteItem('ws', a); return; }
+    if ((a = el.getAttribute('data-undo-ws'))) { undoDelete('ws', a); return; }
+    if ((a = el.getAttribute('data-menu-edit'))) {
+      var it = menuOf(working()).filter(function (x) { return x.id === a; })[0];
+      if (it) {
+        state.menuEdit = { id: it.id, vi: it.vi, en: it.en, dvi: it.dvi, den: it.den, cat: it.cat, price: String(it.price), cost: String(it.cost), sig: it.sig };
+        state.errors = {}; render();
+        var ev = document.getElementById('me-vi'); if (ev) ev.focus();
+      }
+      return;
+    }
+    if ((a = el.getAttribute('data-menu-del'))) {
+      setMenuOp(menuOf(working()).filter(function (x) { return x.id !== a; }));
+      render(); toast(t('menu_deleted'));
+      return;
+    }
+    a = el.getAttribute('data-act');
+    if (a === 'menu') {
+      var links = document.getElementById('nav-links'), nav = document.getElementById('nav');
+      var open = !links.classList.contains('open');
+      links.classList.toggle('open', open);
+      nav.classList.toggle('menu-open', open);
+      el.setAttribute('aria-expanded', String(open));
+      el.textContent = open ? t('close') : t('menu');
+      syncNav();
+    } else if (a === 'chart-table') { state.chartTable = !state.chartTable; render(); }
+    else if (a === 'plan-save') { savePlan(); }
+    else if (a === 'plan-reset') { state.model = modelFrom(working()); rerenderModel(); var rb = root.querySelector('[data-act="plan-reset"]'); if (rb) rb.focus({ preventScroll: true }); }
+    else if (a === 'edit-menu') { state.tab = 'menu'; state.menuEdit = null; state.errors = {}; go('ledger'); }
+    else if (a === 'menu-new') {
+      state.menuEdit = { id: 'new', vi: '', en: '', dvi: '', den: '', cat: 'coffee', price: '', cost: '', sig: false };
+      state.errors = {}; render();
+      var nv = document.getElementById('me-vi'); if (nv) nv.focus();
+    }
+    else if (a === 'menu-cancel') { state.menuEdit = null; state.errors = {}; render(); }
+    else if (a === 'more') { state.txLimit += 20; render(); }
+    else if (a === 'demo') { state.demoData = makeDemo(); state.demo = true; state.period = 'month'; render(); window.scrollTo(0, 0); }
+    else if (a === 'demo-exit') { state.demo = false; state.demoData = null; render(); window.scrollTo(0, 0); }
+    else if (a === 'discard') { pending = []; savePending(); render(); toast(t('discarded')); }
+    else if (a === 'save') { save(); }
+    else if (a === 'csv') {
+      var text = csv();
+      try {
+        navigator.clipboard.writeText(text).then(function () { toast(t('copied')); }, function () { toast(t('copy_fail')); });
+      } catch (err) { toast(t('copy_fail')); }
+    }
+  });
+
+  root.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target.closest('form[data-form]');
+    if (!form) return;
+    if (state.edit !== 'yes' || state.demo) return;
+    var kind = form.getAttribute('data-form');
+    if (kind === 'tx') submitTx(form);
+    else if (kind === 'ws') submitWs(form);
+    else if (kind === 'fund') submitFund(form);
+    else if (kind === 'menu') submitMenu();
+  });
+
+  function onField(e) {
+    var el = e.target;
+    var form = el.closest && el.closest('form[data-form]');
+    if (!form || !el.name) return;
+    var kind = form.getAttribute('data-form');
+    if (kind === 'fund') { state.form.pct = el.value; return; }
+    if (kind === 'menu') { if (state.menuEdit) state.menuEdit[el.name] = el.type === 'checkbox' ? el.checked : el.value; return; }
+    var f = state.form[kind];
+    if (!f || !(el.name in f)) return;
+    if (el.type === 'radio') {
+      if (!el.checked) return;
+      f.t = el.value;
+      f.c = (el.value === 'in' ? IN_CATS : OUT_CATS)[0];
+      render();
+      var r = root.querySelector('input[name="t"][value="' + el.value + '"]');
+      if (r) r.focus({ preventScroll: true });
+      return;
+    }
+    f[el.name] = el.value;
+    if (kind === 'tx' && el.name === 'a') {
+      var hint = document.getElementById('hint-a');
+      if (hint) hint.outerHTML = amountHint(el.value);
+    }
+  }
+  root.addEventListener('input', function (e) {
+    var el = e.target;
+    if (el.closest && el.closest('#m-form')) { onModelInput(el); return; }
+    onField(e);
+  });
+  root.addEventListener('change', function (e) {
+    if (e.target.closest && e.target.closest('#m-form')) return;
+    onField(e);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var links = document.getElementById('nav-links');
+      if (links && links.classList.contains('open')) { closeMenu(); var b = root.querySelector('.menu-btn'); if (b) b.focus(); }
+    }
+  });
+
+  /* ---------------------------------------------------------- capabilities */
+  function initCaps() {
+    var C = window.claude;
+    if (!C || typeof C.use !== 'function') { setEdit('no'); return; }
+    var done = false;
+    var timer = setTimeout(function () { if (!done) { done = true; setEdit('no'); } }, 12000);
+    Promise.resolve().then(function () { return C.use('artifact'); }).then(function (art) {
+      artifactCap = art || null;
+      if (!artifactCap || typeof artifactCap.publish !== 'function') return 'no';
+      return Promise.resolve().then(function () { return C.use('user'); }).then(function (u) {
+        if (!u || typeof u.canEdit !== 'function') return 'yes';
+        return Promise.resolve().then(function () { return u.canEdit(); }).then(function (v) { return v === false ? 'no' : 'yes'; }, function () { return 'yes'; });
+      }, function () { return 'yes'; });
+    }).then(function (res) {
+      if (done) return;
+      done = true; clearTimeout(timer); setEdit(res);
+    }, function () {
+      if (done) return;
+      done = true; clearTimeout(timer); setEdit('no');
+    });
+  }
+  function setEdit(v) {
+    if (state.edit === v) return;
+    state.edit = v;
+    if (state.view === 'ledger') render();
+    else { syncOwnerBits(); renderPending(); }
+  }
+  function syncOwnerBits() {
+    Array.prototype.forEach.call(root.querySelectorAll('.owner-only'), function (el) { el.hidden = state.edit !== 'yes'; });
+  }
+
+  window.GocNho = { build: buildDocument, data: function () { return current(); } };
+
+  render();
+  if (restoreScroll) { var rs = restoreScroll; requestAnimationFrame(function () { window.scrollTo(0, rs); }); }
+  if (lastSave) toast(pending.length ? t('save_conflict') : t('saved'));
+  initCaps();
+})();
+</script>
+</body>
+</html>
